@@ -1,0 +1,303 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Predicting Uber Fares</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Home Page</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="generic.html">Projects</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/diksha-sivaprasad" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+								
+									<h1>Predicting Uber Fare<br />
+									Prices For Future Bookings</h1>
+									
+									</header>
+									
+									<hr />
+									<h2>Objectives</h2>
+									<blockquote>
+										<li>Analyze Uber fare patterns to improve pricing transparency and user satisfaction.</li>
+										<li>Identify the key factors that influence Uber fare prices.</li>
+										<li>Examine how fares vary by time of day, day of the week, and location.</li>
+										<li>Determine the optimal times for users to book rides at the lowest possible rates.</li>
+                                        <li>Provide actionable insights into Uber's pricing strategy to support better travel planning.</li>
+                                        <li>Recommend strategies to enhance customer engagement based on fare trend analysis.</li>
+									</blockquote>
+									
+									
+									<hr />
+									<h2>Methodology</h2>
+									<blockquote><li>Performed exploratory data analysis (EDA) to identify trends in fare prices based on time, distance, and passenger count</li>
+										<li>Cleaned the dataset by removing missing values, invalid coordinates, outliers, and zero-distance trips</li>
+										<li>Created new features from the pickup time (hour, day of the week, month) and calculated trip distance using the Haversine formula</li>
+										<li>Built predictive models including Linear Regression, Decision Tree, Random Forest, and XGBoost, with Grid Search for hyperparameter tuning</li>
+										<li>Utilized <b>Topic Modeling (LDA)</b> to extract key themes such as fit, material, and design</li>
+										<li>Used an 80:20 train-test split and 10-fold cross-validation to evaluate performance</li>
+										<li>Selected Random Forest as the final model due to its superior R² and lowest Mean Absolute Error (MAE)</li>
+										
+									</blockquote>
+									
+									
+
+									<hr />
+									<h2>Data Overview</h2>
+									<dl>
+										<dt>Data Source</dt>
+										<ul class="actions">
+											<li><a href="https://www.kaggle.com/datasets/yasserh/uber-fares-dataset" class="button primary icon solid fa-search">Kaggle: Uber Fares Dataset</a></li>
+										</ul>
+										<dd>
+											<p>This dataset contains 200,000 records spanning trips from 2009 to 2015, providing a comprehensive view<br />
+                                                 of Uber's fare patterns over time.</p>
+										</dd>
+										<dt>Data Dictionary</dt>
+										<dd>
+											<p><div class="table-wrapper">
+												<table>
+													<thead>
+														<tr>
+															<th>Variable</th>
+															<th>Description</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>key</td>
+															<td>A unique identifier for each trip.</td>
+														</tr>
+														<tr>
+															<td>fare_amount </td>
+															<td>The cost of each trip in USD.</td>
+														</tr>
+														<tr>
+															<td>pickup_datetime</td>
+															<td>Date and time when the trip began (meter engaged).</td>
+														</tr>
+														<tr>
+															<td>passenger_count</td>
+															<td>The number of passengers in the vehicle (input by the
+                                                                driver).</td>
+														</tr>
+														<tr>
+															<td>pickup_longitude</td>
+															<td>The longitude where the trip started.</td>
+														</tr>
+														<tr>
+															<td>pickup_latitude</td>
+															<td>The latitude where the trip started.</td>
+														</tr>
+														<tr>
+															<td>dropoff_longitude</td>
+															<td>The longitude where the trip ended (meter disengaged).
+                                                            </td>
+														</tr>
+														<tr>
+															<td>dropoff_latitude</td>
+															<td>The latitude where the trip ended.</td>
+														</tr>
+														
+														
+													</tfoot>
+												</table>
+											
+											</div></p>
+											<dt>Data Cleaning</dt>
+											<p style="margin-top: -10px; font-size: 16px; color: #555;">
+											  Five steps of data cleaning were performed, reducing the total no. of rows from 200,000 to 179,501.
+											</p>
+											
+											<!-- Centered image section -->
+											<div style="display: flex; justify-content: center; margin-top: 1rem;">
+											  <img src="Uber_Graph_8.png" alt="Data Cleaning" style="width: 600px; border-radius: 6px;" />
+											</div>
+											
+											<br>
+
+										<dt>Removing Geographic Outliers</dt>
+										<p style="margin-top: -10px; font-size: 16px; color: #555;">
+											Detecting and removing outliers in Uber pickup data based on latitude and longitude ensures more accurate analysis
+and reliable predictions.
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<div class="col-4"><span class="image fit"><img src="Uber_Graph_10.png" alt="Geographic Outliers"  style="width: 900px;" />
+												</span></div>
+											
+											</div>
+											
+										</div>
+
+										<dt>Data Manipulation</dt>
+										<p style="margin-top: -10px; font-size: 16px; color: #555;">
+											Pickup time was processed into month, hour, and weekday, and distances were calculated using the
+Haversine formula.
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<div style="display: flex; gap: 20px; justify-content: center;">
+													<img src="Uber_Graph_9.png" alt="Data Manipulation" style="width: 450px;" />
+													<img src="Uber_Graph_11.png" alt="Haversine Formula" style="width: 450px;" />
+												  </div>
+											
+											</div>
+											
+										</div>
+										
+										<h2>Analysis</h2>
+										<dt>Trip Count and Average Fare by Distance Range</dt>
+										<p style="margin-top: -10px; font-size: 16px; color: #555;">
+											The left chart shows most trips are 2-5 km, while the right chart indicates average fares increase
+proportionally with distance
+and reliable predictions.
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<div class="col-4"><span class="image fit"><img src="Uber_Graph_1.png" alt="Graph 1"  style="width: 900px;" />
+												</span></div>
+											
+											</div>
+											<br>
+										<dt>Trip Count and Average Fare by Hour and Distance Range</dt>
+										<p style="margin-top: -10px; font-size: 16px; color: #555;">
+											The left chart shows trip counts peaking in the evening, while the right heatmap highlights higher
+average fares for longer distances during peak hours.
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<div class="col-4"><span class="image fit"><img src="Uber_graph_2.png" alt="Graph 2"  style="width: 900px;" />
+												</span></div>
+											
+											</div>
+
+										</div>
+
+										<dt>Trip Count and Average Fare by Hour and Distance Range</dt>
+										<p style="margin-top: -10px; font-size: 16px; color: #555;">
+											The left chart shows trip counts peaking in the evening, while the right heatmap highlights higher
+average fares for longer distances during peak hours.
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<div class="col-4"><span class="image fit"><img src="Uber_Graph_3.png" alt="Graph 3"  style="width: 900px;" />
+												</span></div>
+											
+											</div>
+									
+										</div>
+
+										<dt>Trip Count and Average Fare by Month and Distance Range</dt>
+										<p style="margin-top: -10px; font-size: 16px; color: #555;">
+											The left chart shows steady monthly trip counts, while the right heatmap highlights peaks in certain months
+and distance ranges.
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<div class="col-4"><span class="image fit"><img src="Uber_Graph_4.png" alt="Graph 4"  style="width: 900px;" />
+												</span></div>
+											
+											</div>
+										
+										</div>
+
+										<dt>Trip Count and Average Fare by Weekday and Distance Range</dt>
+										<p style="margin-top: -10px; font-size: 16px; color: #555;">
+											The left chart shows trip counts by weekday, peaking weekends, while the right heatmap reveals higher
+											average fares for longer distances, with notable peaks on specific weekdays.
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<div class="col-4"><span class="image fit"><img src="Uber_Graph_5.png" alt="Graph 5"  style="width: 900px;" />
+												</span></div>
+											
+											</div>
+
+
+
+										</div>
+
+										<dt>Regression Analysis on Fare Amount</dt>
+										<p style="margin-top: -10px; font-size: 16px; color: #555;">
+											Data was split into 80% for training and 20% for testing, and we used the 10-Fold Cross Validation method.
+The model recorded a Mean Absolute Error (MAE) : 2.26, R²: 0.73, indicating strong fit and accuracy.
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<div class="col-4"><span class="image fit"><img src="Uber_Graph_6.png" alt="Graph 6"  style="width: 900px;" />
+												</span></div>
+											
+											</div>	
+
+										</div>
+
+										<dt>Model Performance Comparison</dt>
+										<p style="margin-top: -10px; font-size: 16px; color: #555;">
+											Data was split into 80% for training and 20% for testing, and the performance of XGBoost, Decision Tree,
+and Random Forest models were compared.
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<div class="col-4"><span class="image fit"><img src="Uber_Graph_7.png" alt="Graph 7"  style="width: 900px;" />
+												</span></div>
+											
+											</div>		
+
+											<hr />
+											<h2>Conclusions</h2>
+											<blockquote>
+												<li>Most passengers travel a distance between 2-5 km, making it the
+													biggest factor.</li>
+												<li>Peak hours between 6-8pm and Wednesday’s and Friday’s affect
+													prices due to demand.</li>
+												<li>passenger count has a moderate impact,
+													with larger groups slightly increasing fares due to vehicle size requirements.</li>
+												<li>Higher fares during rush hours and weekends.</li>
+												<li>Urban and high-demand areas exhibit higher fare variability, reflecting the influence of location.</li>
+												<li>Early morning (non-peak hours) offers the lowest fares.</li>
+												<li>Avoid rush hours and weekends to prevent surge pricing.</li>
+											</blockquote>
+											
+		
+											<hr />
+									</dl>
+
+									
+									
+
+
+						
+									
+									
+	
+
+				
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,214 @@
+/* Override old portfolio theme to match new portfolio (slate + orange, light bg) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+html, body {
+  background: #f8fafc !important;
+  color: #334155 !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+body.is-preload { background: #f8fafc !important; }
+
+/* Replace header/nav with new-portfolio bar - hide old, style report-nav */
+#header, #nav {
+  display: none !important;
+}
+
+.report-nav {
+  display: block !important;
+}
+
+/* Main content area - match new portfolio */
+#wrapper {
+  padding-top: 0 !important;
+}
+
+#main {
+  padding: 2rem 1.5rem 3rem !important;
+  max-width: 900px;
+  margin: 0 auto !important;
+  background: #fff !important;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  margin-top: 1rem !important;
+}
+
+/* Typography */
+#main h1, #main .major h1 {
+  color: #0f172a !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 1.875rem !important;
+  line-height: 1.3 !important;
+  margin-bottom: 1rem !important;
+}
+
+#main h2 {
+  color: #0f172a !important;
+  font-family: 'Inter', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 1.25rem !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 0.75rem !important;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid #fed7aa;
+}
+
+#main p, #main dd p, #main .box p {
+  color: #475569 !important;
+  font-size: 1rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Objectives / blockquote lists: no orange bar, one-line spacing, no italics (all projects) */
+#main blockquote {
+  color: #475569 !important;
+  border-left: none !important;
+  background: #fff7ed !important;
+  padding: 0.75rem 1rem !important;
+  margin: 0.5rem 0 !important;
+  border-radius: 0.5rem !important;
+  font-style: normal !important;
+}
+
+#main blockquote li {
+  color: #475569 !important;
+  border-left: none !important;
+  background: transparent !important;
+  padding: 0 !important;
+  margin: 0.25em 0 !important;
+  line-height: 1.5 !important;
+  font-style: normal !important;
+}
+
+/* Remove italics everywhere in report content */
+#main em,
+#main i {
+  font-style: normal !important;
+}
+
+#main dt {
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  margin-top: 1rem !important;
+}
+
+/* Definition lists: consistent left alignment, no extra indent (all projects) */
+#main dl {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+#main dd {
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+#main dd p {
+  text-align: left !important;
+  margin: 0.5em 0 !important;
+}
+
+/* Buttons - orange like new portfolio */
+#main .button.primary, #main .button:hover {
+  background: #f97316 !important;
+  color: #fff !important;
+  border-color: #f97316 !important;
+  border-radius: 0.5rem !important;
+}
+
+#main .button {
+  border-radius: 0.5rem !important;
+}
+
+/* Tables */
+#main table {
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 0.5rem !important;
+  overflow: hidden !important;
+}
+
+#main th {
+  background: #f1f5f9 !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+  padding: 0.75rem 1rem !important;
+}
+
+#main td {
+  padding: 0.5rem 1rem !important;
+  border-color: #e2e8f0 !important;
+}
+
+#main tr:nth-child(even) td {
+  background: #f8fafc !important;
+}
+
+/* Links */
+#main a {
+  color: #ea580c !important;
+}
+
+#main a:hover {
+  color: #c2410c !important;
+}
+
+/* Horizontal rules */
+#main hr {
+  border-color: #e2e8f0 !important;
+  margin: 1.5rem 0 !important;
+}
+
+/* Images - applies to ALL project reports (Uber, Sephora, Stress, TSA).
+   Override inline sizes (px or %) so none are too small or too big. */
+#main img {
+  border-radius: 0.5rem !important;
+  height: auto !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  display: block !important;
+}
+
+/* Single full-width images: cap at readable size */
+#main .image.fit img,
+#main dt .box.alt img,
+#main > .post img {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Side-by-side image pairs (e.g. Data Manipulation, Haversine): same row, good size each */
+#main div[style*="display: flex"] img {
+  min-width: 280px !important;
+  width: 100% !important;
+  max-width: 48% !important;
+  flex: 1 1 45% !important;
+}
+
+/* Container for side-by-side images: ensure flex layout and spacing */
+#main div[style*="display: flex"] {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 1.5rem !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+}
+
+#main div[style*="display: flex"] img {
+  object-fit: contain !important;
+}
+
+/* Single centered image (e.g. Data Cleaning): full width of content */
+#main div[style*="justify-content: center"] img {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Let single images in .box.alt (e.g. Geographic Outliers, Analysis charts) use full width */
+#main .box.alt .row,
+#main .box.alt .row .col-4,
+#main .box.alt .image.fit {
+  width: 100% !important;
+  max-width: 100% !important;
+}

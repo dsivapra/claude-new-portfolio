@@ -1,0 +1,171 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { Calendar } from 'lucide-react'
+import { useEffect } from 'react'
+
+const DoodleBriefcase = () => (
+  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <rect x="3" y="10" width="22" height="15" rx="3" stroke="white" strokeWidth="2" fill="none"/>
+    <path d="M9 10 L9 7 C9 5.9 9.9 5 11 5 L17 5 C18.1 5 19 5.9 19 7 L19 10" stroke="white" strokeWidth="2" strokeLinecap="round" fill="none"/>
+    <path d="M3 15 Q14 18 25 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" fill="none"/>
+    <path d="M12 15 L12 17 L16 17 L16 15" stroke="white" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+  </svg>
+)
+
+const Log = {
+  section: (title: string) => {
+    console.log('\n' + '='.repeat(50))
+    console.log(`  ${title}`)
+    console.log('='.repeat(50))
+  },
+  info: (msg: string) => console.log(`[INFO] ${msg}`),
+  warn: (msg: string) => console.warn(`[WARN] ${msg}`),
+  error: (msg: string, context?: Record<string, any>) => {
+    console.error(`[ERROR] ${msg}`)
+    if (context) {
+      const kv = Object.entries(context).map(([k, v]) => `${k}=${v}`).join(' | ')
+      console.error(`[ERROR] Context: ${kv}`)
+    }
+  },
+  kv: (data: Record<string, any>) => {
+    const kv = Object.entries(data).map(([k, v]) => `${k}=${v}`).join(' | ')
+    console.log(`[KV] ${kv}`)
+  },
+}
+
+const experiences = [
+  {
+    title: 'Business Analyst',
+    company: 'Virstack',
+    location: 'Irvine, CA',
+    period: 'October 2025 - Present',
+    summary: 'Deploying client-specific virtual AI agents within an internal automation platform, designing conversational flows that improved customer support interactions. Built and automated project tracking AI workflows in Airtable and JIRA to streamline process improvement and enable data-informed decision-making. Collaborate with developers and designers using JIRA and Figma to plan sprints, document features, and build wireframes for mobile and web application development.',
+  },
+  {
+    title: 'Project Consultant',
+    company: 'Seed Consulting Group',
+    location: 'Irvine, CA',
+    period: 'September 2025 - Present',
+    summary: 'Built an AI-powered sponsorship outreach platform using GPT-4o-mini and a custom RAG pipeline, transforming a static playbook into a dynamic decision-support tool with a chatbot for a nonprofit organization based in San Diego.',
+  },
+  {
+    title: 'Business Analyst Intern',
+    company: 'Bosch',
+    location: 'Irvine, CA',
+    period: 'January 2025 - June 2025',
+    summary: 'Improved supply chain and inventory planning accuracy by 13% by developing predictive models in Python, SQL, and Power BI. Built advanced forecasting models (ARIMA, XGBoost, Prophet, Cosine Similarity) to predict SKU-level product launch demand. Delivered Power BI dashboards and clear stakeholder-ready summaries, enabling non-technical teams to adjust messaging and planning strategies based on real-time demand signals.',
+  },
+  {
+    title: 'Project Consultant',
+    company: 'Karma Automotive',
+    location: 'Irvine, CA',
+    period: 'January 2025 - March 2025',
+    summary: 'Identified and evaluated 20+ strategic EV partnerships by conducting stakeholder interviews, market research, and SQL-based analysis, supporting the expansion of EV charging infrastructure across Southern California. Improved targeting and effectiveness of EV workforce initiatives by building a SQL-based partner database and collaborating with marketing leadership to design data-sharing and measurement frameworks.',
+  },
+  {
+    title: 'Product Marketing Analyst',
+    company: 'Bayut and Dubizzle',
+    location: 'Dubai, UAE',
+    period: 'July 2021 - May 2023',
+    summary: 'Achieved a 30% increase in advertising campaign engagement by optimizing content strategy across CMS platforms and social channels (Instagram, TikTok, Facebook). Collaborated across marketing, design, engineering, and product teams to analyze paid ad campaigns during FIFA World Cup 2022 using SQL and Excel, delivering weekly performance insights that led to a 12% boost in ad engagement. Delivered a 10% increase in audience reach on key products by analyzing engagement metrics, conducting user interviews, and maintaining documentation to refine product strategy.',
+  },
+  {
+    title: 'Media Intelligence Analyst Intern',
+    company: 'LexisNexis',
+    location: 'Dubai, UAE',
+    period: 'November 2020 - July 2021',
+    summary: 'Delivered 30+ campaign intelligence reports by analyzing brand sentiment, coverage volume, and social listening data using Nexis Newsdesk, Excel, and Looker Studio. Generated competitive intelligence and media analytics reports for high-profile clients, including the UAE Ministry of Interior, Emirates Global Aluminum, Qatar Library, and Tasaki Jewelry UK. Developed internal social listening and analytics dashboards that tracked campaign lifecycle metrics across earned media, and translated insights into strategic playbooks for client marketing teams.',
+  },
+]
+
+export default function Experience() {
+  useEffect(() => {
+    Log.section('Experience Component')
+    Log.info('Experience section rendered')
+    Log.kv({ experiencesCount: experiences.length })
+  }, [])
+
+  return (
+    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-transparent bg-texture relative">
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900 tracking-tight">
+            Experience
+          </h2>
+          
+          {/* Decorative Elements */}
+          <div className="absolute top-10 left-10 decorative-diamond opacity-20"></div>
+          <div className="absolute bottom-10 right-10 decorative-squiggle opacity-15"></div>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-orange-500 via-pink-500 to-rose-500 rounded-full mx-auto"></div>
+        </motion.div>
+
+        <div className="space-y-4">
+          {experiences.map((exp, index) => {
+            const colors = [
+              { bg: 'bg-orange-500', hover: 'bg-orange-600', border: 'border-orange-200', accent: 'text-orange-600' },
+              { bg: 'bg-pink-500', hover: 'bg-pink-600', border: 'border-pink-200', accent: 'text-pink-600' },
+              { bg: 'bg-rose-500', hover: 'bg-rose-600', border: 'border-rose-200', accent: 'text-rose-600' },
+              { bg: 'bg-amber-500', hover: 'bg-amber-600', border: 'border-amber-200', accent: 'text-amber-600' },
+              { bg: 'bg-fuchsia-500', hover: 'bg-fuchsia-600', border: 'border-fuchsia-200', accent: 'text-fuchsia-600' },
+              { bg: 'bg-red-500', hover: 'bg-red-600', border: 'border-red-200', accent: 'text-red-600' },
+            ]
+            const color = colors[index % colors.length]
+            
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.08, duration: 0.5 }}
+                className="group relative"
+                whileHover={{ x: index % 2 === 0 ? 4 : -4 }}
+              >
+                <div className={`absolute -inset-0.5 bg-gradient-to-r ${color.bg} rounded-xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-300`}></div>
+                <div className={`relative bg-white rounded-xl p-8 border-2 ${color.border} hover:shadow-2xl transition-all duration-300 overflow-hidden`}>
+                  <div className={`absolute top-0 left-0 w-1 h-full ${color.bg} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-orange-100 to-pink-100 rounded-full -mr-12 -mt-12 opacity-20 group-hover:opacity-40 transition-opacity"></div>
+                  <div className="relative z-10 flex items-start gap-6">
+                    <div className="flex-shrink-0">
+                      <motion.div 
+                        className={`w-14 h-14 rounded-xl ${color.bg} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300`}
+                        whileHover={{ rotate: [0, 10, -10, 10, 0], scale: 1.1 }}
+                        transition={{ duration: 0.5 }}
+                      >
+                        <DoodleBriefcase />
+                      </motion.div>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-baseline gap-2 mb-2">
+                        <h3 className="text-xl font-semibold text-slate-900">{exp.title}</h3>
+                        <span className="text-slate-400">•</span>
+                        <p className={`text-lg font-medium ${color.accent}`}>{exp.company}</p>
+                      </div>
+                      <div className="flex items-center gap-3 text-slate-500 mb-4 text-sm">
+                        <span>{exp.location}</span>
+                        <span>•</span>
+                        <div className="flex items-center gap-1">
+                          <Calendar className="w-4 h-4" />
+                          <span>{exp.period}</span>
+                        </div>
+                      </div>
+                      <p className="text-slate-600 leading-relaxed">{exp.summary}</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            )
+          })}
+        </div>
+      </div>
+    </section>
+  )
+}
+

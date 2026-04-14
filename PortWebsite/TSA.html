@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>TSA Baggage Claims Statistical Analysis</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Home Page</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="generic.html">Projects</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/diksha-sivaprasad" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+								
+									<h1>TSA Baggage Claims Statistical Analysis
+									</h1>
+									
+									</header>
+									
+									<hr />
+									<section>
+                                        <h2>Objectives</h2>
+                                        <blockquote>
+                                        <ul>
+                                          <li>Investigate if baggage claim rates significantly differ across major U.S. airports.</li>
+                                          <li>Analyze whether claim rates vary when broken down by both airport and quarter.</li>
+                                          <li>Assess if specific airlines show a higher frequency of claims, indicating variability in baggage handling practices.</li>
+                                          <li>Motivated by findings such as TSA paying over <strong>$3 million</strong> for 50,000 claims (USA TODAY), with <strong>JFK (857 claims)</strong> and <strong>LAX (791 claims)</strong> topping the list of busiest airports involved in settlements.</li>
+                                          <li>Support data-driven improvements in baggage handling and passenger experience by identifying patterns in TSA claim distributions.</li>
+                                        </ul>
+                                      </blockquote>
+                                      </section>
+                                      
+                                      
+                                      <section style="margin-top: 2rem;">
+                                        <h2>Methodology</h2>
+                                        <blockquote>
+                                        <ul>
+                                          <li>Obtained TSA claims data and U.S. passenger traffic data from Kaggle and other open sources.</li>
+                                          <li>Defined mainstream airports (DFW, JFK, LAX, LGA, ORD, SFO), four major airlines (American, Delta, United, Southwest), and focused analysis on the year 2015.</li>
+                                          <li>Calculated the number of claims by airport and airline, and total passengers by airport and quarter.</li>
+                                          <li>Used <strong>Chi-square tests</strong> to evaluate claim rate differences across:
+                                            <ul>
+                                              <li>Airports</li>
+                                              <li>Airports by quarter</li>
+                                              <li>Airlines (with airline passenger volume estimated using market share data)</li>
+                                            </ul>
+                                          </li>
+                                          <li>Adopted a significance level of α = 0.05 to determine statistical relevance in all tests.</li>
+                                        </ul>
+                                      </blockquote>
+                                      </section>
+                                      
+									
+									
+
+                                      <h2>Data Overview</h2>
+                                      <dl>
+                                        <dt>Data Sources</dt>
+                                        <ul class="actions">
+                                          <li>
+                                            <a href="https://www.kaggle.com/datasets/terminal-security-agency/tsa-claims-database" 
+                                               class="button primary icon solid fa-database">
+                                               TSA Claims Database
+                                            </a>
+                                          </li>
+                                          <li>
+                                            <a href="https://www.kaggle.com/datasets/bhavikjikadara/us-airline-flight-routes-and-fares-1993-2024" 
+                                               class="button primary icon solid fa-database">
+                                               Passenger Count Dataset
+                                            </a>
+                                          </li>
+                                        </ul>
+                                        
+                                          <p>
+                                            Two datasets from Kaggle were used to conduct this analysis. The <strong>TSA Claims Database</strong> includes property and injury claims filed from 2002 to 2015, providing details like incident date, airport, airline, and claim type. It helped calculate the number of claims filed per airline and airport. The second dataset, <strong>US Airline Flight Routes and Fares</strong>, spans from 1993 to 2024 and offers insights into passenger volumes by airport and quarter. This allowed us to normalize claim counts by passenger traffic, offering a fair comparison of claim rates across locations and carriers.
+                                          </p>
+                                        
+                                      
+                                          <section>
+                                            <h2>Statistical Analysis: Part 1</h2>
+                                            <p>Chi-square test was conducted to determine if there was a difference in the proportion of claims across major airports.</p>
+                                          
+                                            <p><strong>Target Scope:</strong></p>
+                                            <ul>
+                                              <li><strong>Airports:</strong> DFW, JFK, LAX, LGA, ORD, SFO (6 airports)</li>
+                                              <li><strong>Airlines:</strong> American Airlines, Delta Airlines, Southwest Airlines, United Airlines (4 airlines)</li>
+                                              <li><strong>Year:</strong> 2015</li>
+                                            </ul>
+                                          
+                                            <p><strong>Hypothesis Test:</strong></p>
+                                            <p><em>H<sub>0</sub>: The proportion of the claims is the same among airports</em></p>
+                                          
+                                            <!-- Image of tables and arrow -->
+                                            <div style="text-align: center; margin: 2rem 0;">
+                                              <img src="TSA_graph_1.png" alt="Chi-Square test table and diagram showing test results" style="max-width: 90%; border: 1px solid #ccc; border-radius: 6px;">
+                                            </div>
+                                          
+                                            <p><strong>Conclusion:</strong> <span style="color: darkred;">Reject H<sub>0</sub></span></p>
+                                            <ul>
+                                              <li>The data shows that there are statistically significant differences in the proportion of claims among airports.</li>
+                                            </ul>
+                                          </section>
+                                          
+                                          <section>
+                                            <h2>Statistical Analysis: Part 2</h2>
+                                            <p>Chi-square test was conducted to determine if there was a difference in the proportion of claims by airport and season (quarter).</p>
+                                          
+                                            <p><em>H<sub>0</sub>: the proportion of the claim are the same among airports and seasons</em></p>
+                                          
+                                            <!-- Screenshot placeholder -->
+                                            <div style="text-align: center; margin: 1rem 0;">
+                                              <img src="TSA_graph_2.png" alt="Chi-Square Test by Airport and Quarter" style="max-width: 90%; border: 1px solid #ccc; border-radius: 6px;">
+                                            </div>
+                                          
+                                            <p><strong>Conclusion:</strong></p>
+                                            <ul>
+                                              <li><strong>For LAX, JFK, DFW:</strong> <span style="color: darkred;">Reject H<sub>0</sub></span></li>
+                                              <li><strong>For SFO, ORD, LGA:</strong> <span style="color: darkslategray;">Do not reject H<sub>0</sub></span></li>
+                                            </ul>
+                                          </section>
+                                          
+                                          <section>
+                                            <h2>Statistical Analysis: Part 3</h2>
+                                          
+                                            <p>Chi-square test was conducted to determine if there was a difference in claim proportions by airlines.</p>
+                                          
+                                            <p><em>H<sub>0</sub>: the proportion of the claim are the same among airlines</em></p>
+                                          
+                                            <ul>
+                                              <li><strong>Need:</strong> The total number of passengers at each airline</li>
+                                            </ul>
+                                          
+                                            <div style="background-color: #e6f0fa; padding: 1rem; border: 1px solid #ccc; border-radius: 6px; margin-bottom: 1rem;">
+                                              <p><strong>Issue:</strong><br>
+                                              Dataset does not provide the total number of passengers for each airline, only totals across all airlines.</p>
+                                              
+                                              <p><strong>Solution:</strong><br>
+                                              Use airline market share to estimate the total number of passengers for each airline.</p>
+                                            </div>
+                                          
+                                            <!-- First image: Market Share Graph -->
+                                            <div style="text-align: center; margin-bottom: 1rem;">
+                                              <img src="TSA_graph_3.png" alt="Market Share of Top U.S. Airlines" style="max-width: 90%; border: 1px solid #ccc; border-radius: 6px;">
+                                            </div>
+                                          
+                                            <!-- Second image: Table with Chi-Square Result -->
+                                            <div style="text-align: center;">
+                                              <img src="TSA_graph_4.png" alt="Chi-Square Test Results by Airline" style="max-width: 90%; border: 1px solid #ccc; border-radius: 6px;">
+                                            </div>
+                                          
+                                            <p><strong>Conclusion: <span style="color: darkred;">Reject H<sub>0</sub></span></strong></p>
+                                            <ul>
+                                              <li>The data shows that there are differences in the proportion of claims among airlines.</li>
+                                            </ul>
+                                            
+                                            
+                                            <h2>Conclusions</h2>
+                                            <blockquote>
+                                            <ul>
+                                              <li>
+                                                <strong>Airports:</strong>
+                                                <strong>Is there a difference in the claim rate across airports?</strong><br>
+                                                Yes — claim rates vary across major airports.<br>
+                                                SFO reported the fewest claims, indicating fewer issues or better operations.<br>
+                                                ORD had the highest number of claims filed, signaling potential gaps in handling or procedures.
+                                              </li>
+                                            
+                                              <li>
+                                                <strong>Seasons:</strong>
+                                                <strong>Does the claim rate differ by quarter when analyzed?</strong><br>
+                                                Yes — claim rates fluctuate based on the time of year.<br>
+                                                LAX, JFK, and DFW showed significant seasonal differences.<br>
+                                                Q3 (summer) recorded the highest claim rates, possibly due to increased travel and congestion.<br>
+                                                Q4 (winter) had the lowest, suggesting a safer or more efficient travel period.
+                                              </li>
+                                            
+                                              <li>
+                                                <strong>Airlines:</strong>
+                                                <strong>Is there a variation in the claim rate by airline?</strong><br>
+                                                Yes — airlines differ in how frequently claims are filed.<br>
+                                                Southwest Airlines had the fewest claims, reflecting potentially stronger baggage or service protocols.<br>
+                                                American Airlines had the most, suggesting room for operational improvements.
+                                              </li>
+                                            </ul>
+                                          </blockquote>
+                                            
+                                            <h2>Limitations</h2>
+                                            <blockquote>
+                                            <ul>
+                                            <li>The dataset does not account for <strong>flight frequency</strong> or <strong>airport capacity</strong>, which can influence claim volume.</li>
+                                            <li>Lack of <strong>individual airline passenger data</strong> makes it harder to assess per-airline claim rates accurately.</li>
+                                            <li>Analysis is based on data from a single year — <strong>2015</strong> — which limits the ability to track trends over time.</li>
+                                            <li>Only <strong>domestic flight data</strong> was included, excluding international operations where claim behavior may differ.</li>
+                                            <li>No details were provided on <strong>baggage handling procedures</strong>, which could directly impact claim incidents.</li>
+                                            <li>The market share used to estimate passengers by airline may not perfectly reflect actual travel volumes for 2015.</li>
+                                            <li>Passenger demographics or travel purpose, which could affect claim likelihood, were not available.</li>
+                                            </ul>
+                                          </blockquote>
+                                          
+
+
+										
+									</dl>

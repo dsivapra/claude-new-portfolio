@@ -1,0 +1,370 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Predicting Uber Fares</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Home Page</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="generic.html">Projects</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/diksha-sivaprasad" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+								
+									<h1>Predicting Uber Fare<br />
+									Prices For Future Bookings</h1>
+									
+									</header>
+									
+									<hr />
+									<h2>Objectives</h2>
+									<blockquote>
+										<li>Analyze Uber fare patterns to improve pricing transparency and user satisfaction.</li>
+										<li>Identify the key factors that influence Uber fare prices.</li>
+										<li>Examine how fares vary by time of day, day of the week, and location.</li>
+										<li>Determine the optimal times for users to book rides at the lowest possible rates.</li>
+                                        <li>Provide actionable insights into Uber's pricing strategy to support better travel planning.</li>
+                                        <li>Recommend strategies to enhance customer engagement based on fare trend analysis.</li>
+									</blockquote>
+									
+									
+									<hr />
+									<h2>Methodology</h2>
+									<blockquote><li>Performed exploratory data analysis (EDA) to identify trends in fare prices based on time, distance, and passenger count</li>
+										<li>Cleaned the dataset by removing missing values, invalid coordinates, outliers, and zero-distance trips</li>
+										<li>Created new features from the pickup time (hour, day of the week, month) and calculated trip distance using the Haversine formula</li>
+										<li>Built predictive models including Linear Regression, Decision Tree, Random Forest, and XGBoost, with Grid Search for hyperparameter tuning</li>
+										<li>Utilized <b>Topic Modeling (LDA)</b> to extract key themes such as fit, material, and design</li>
+										<li>Used an 80:20 train-test split and 10-fold cross-validation to evaluate performance</li>
+										<li>Selected Random Forest as the final model due to its superior R² and lowest Mean Absolute Error (MAE)</li>
+										
+									</blockquote>
+									
+									
+
+									<hr />
+									<h2>Data Overview</h2>
+									<dl>
+										<dt>Data Source</dt>
+										<ul class="actions">
+											<li><a href="https://www.kaggle.com/datasets/yasserh/uber-fares-dataset" class="button primary icon solid fa-search">Kaggle: Uber Fares Dataset</a></li>
+										</ul>
+										<dd>
+											<p>This dataset contains 200,000 records spanning trips from 2009 to 2015, providing a<br />
+                                                comprehensive view of Uber's fare patterns over time. .</p>
+										</dd>
+										<dt>Data Dictionary</dt>
+										<dd>
+											<p><div class="table-wrapper">
+												<table>
+													<thead>
+														<tr>
+															<th>Variable</th>
+															<th>Description</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>key</td>
+															<td>A unique identifier for each trip.</td>
+														</tr>
+														<tr>
+															<td>fare_amount </td>
+															<td>The cost of each trip in USD.</td>
+														</tr>
+														<tr>
+															<td>pickup_datetime</td>
+															<td>Date and time when the trip began (meter engaged).</td>
+														</tr>
+														<tr>
+															<td>passenger_count</td>
+															<td>The number of passengers in the vehicle (input by the
+                                                                driver).</td>
+														</tr>
+														<tr>
+															<td>pickup_longitude</td>
+															<td>The longitude where the trip started.</td>
+														</tr>
+														<tr>
+															<td>pickup_latitude</td>
+															<td>The latitude where the trip started.</td>
+														</tr>
+														<tr>
+															<td>dropoff_longitude</td>
+															<td>The longitude where the trip ended (meter disengaged).
+                                                            </td>
+														</tr>
+														<tr>
+															<td>dropoff_latitude</td>
+															<td>The latitude where the trip ended.</td>
+														</tr>
+														
+														
+													</tfoot>
+												</table>
+											</div></p>
+										<dt>Exploratory Data Analysis (EDA)</dt>
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<div class="col-4"><span class="image fit"><img src="visual/review1.png" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="visual/review2.png" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="visual/review4.png" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="visual/review7.png" alt="" /></span></div>
+												<div class="col-4"><span class="image fit"><img src="" alt="" /></span></div>
+											</div>
+											
+										</div>
+										
+										<span class="image fit"><img src="visual/review3.png" alt="" /></span>
+										<span class="image fit"><img src="visual/review5.png" alt="" /></span>
+										<span class="image fit"><img src="visual/review6.png" alt="" /></span>
+
+										<div class="box">
+											<li><b>High Satisfaction:</b> 82% of reviews are positive, indicating strong customer approval.</li>
+											<li><b>Top-performing Items:</b> 57% of clothing items received 100% positive recommendations.</li>
+											<li><b>Core Audience:</b> Most reviewers are between 35–55 years old, reflecting a middle-aged customer base.</li>
+											<li><b>Low Feedback Volume:</b> Most reviews have little positive feedback, though some items receive over 100 likes.</li>
+											<li><b>Strong Correlation:</b> Higher ratings are highly associated with product recommendations (correlation = 0.792).</li>
+											<li><b>Two Review Patterns:</b> Review lengths show two peaks—around 40 and 100 words—indicating both brief and detailed reviewers.</li>
+										</div>
+									</dl>
+									
+									<hr />
+									<h2>Text Mining</h2>
+									<h3>1. Text Preprocessing</h3>
+									<li>Lowercasing: Convert all text to lowercase for consistency.</li>
+									<li>Removing punctuation: Remove special characters such as “.,!?;:” to maintain textual uniformity.</li>
+									<li>Removing stopwords: Remove commonly used words like “the,” “and,” “is,” which do not contribute significant meaning.</li>
+									<p></p>
+
+									<h3>2.Word Frequency Analysis</h3>
+									<li>Top 20 Most Common Words in Reviews</li>
+									<span class="image fit"><img src="visual/review8.png" alt="" /></span>
+									<li>Top 20 Most Common Bigrams in Reviews</li>
+									<span class="image fit"><img src="visual/review9.png" alt="" /></span>
+									<li>Top 20 Most Common Trigrams in Reviews</li>
+									<span class="image fit"><img src="visual/review10.png" alt="" /></span>
+									<div class="box">
+										<li><b>Most Reviewed Items:</b> “Dress,” “top,” and “sweater” are the most frequently mentioned items, indicating they are the most purchased or reviewed.</li>
+										<li><b>Fit & Sizing Focus:</b> Words like “size,” “fit,” “small,” “true size,” and “runs large” appear frequently, showing that sizing is a key customer concern.</li>
+										<li><b>Fabric & Comfort:</b> Terms such as “fabric,” “material,” “soft,” and “comfortable” highlight the importance of clothing quality and feel in customer satisfaction.</li>
+										<li><b>Emotional Sentiment:</b> Positive words like “love,” “great,” “perfect,” and “flattering” dominate, indicating a generally favorable emotional tone.</li>
+										<li><b>Implication for Retailers:</b> Frequent mentions of fit and material suggest that clear size guides and fabric details are critical for reducing dissatisfaction and returns.</li>
+									</div>
+									
+									<h3>3.Word Cloud</h3>
+									<li>Top 20 Most Common Words in Reviews</li>
+									<span class="image fit"><img src="visual/review11.png" alt="" /></span>
+									<div class="box">
+										<li>Fit, size accuracy, fabric quality, and overall appearance are the most discussed aspects in reviews.</li>
+										<li>Customers emphasize whether clothing fits well, feels comfortable, and meets their expectations in terms of design and material.</li>
+										<li>Retailers should ensure accurate sizing information, highlight fabric quality, and address common fit concerns to improve customer satisfaction.</li>
+									</div>
+									
+									<h3>4.Topic Modeling (LDA)</h3>
+									<li>Top 20 Most Common Words in Reviews</li>
+									<span class="image fit"><img src="visual/review12.png" alt="" /></span>
+
+									<hr />
+									<h2>Sentiment Analysis</h2>
+									<pre><code><p>df_cleaned = sentiment.dropna(subset=["Review Text"])<br />df_cleaned = df_cleaned[["Review Text", "Rating", "Recommended IND"]]<br />def assign_sentiment(rating):<br />if rating >= 4:<br />	return "Positive"<br />elif rating == 3:<br />	return "Neutral"<br />else:<br />	return "Negative"<br />df_cleaned["Sentiment"] = df_cleaned["Rating"].apply(assign_sentiment)</p></code></pre>
+									<h3>1.Distribution & Word Cloud</h3>
+									<li>Positive Reviews (Left Word Cloud - Green)</li>
+									<li>Neutral Reviews (Middle Word Cloud - Orange) </li>
+									<li>Negative Reviews (Right Word Cloud - Red)</li>
+									<p></p>
+									<div class="box alt">
+										<div class="row gtr-50 gtr-uniform">
+											<div class="col-8"><span class="image fit"><img src="visual/review13.png" alt="" /></span></div>
+											<div class="col-8"><span class="image fit"><img src="visual/review14.png" alt="" /></span></div>
+										</div>
+									</div>
+									
+									
+									<h3>2.Comparative Analysis of Classification Models</h3>
+									<li>Logistic Regression (LR)</li>
+									<li>Naïve Bayes (NB)</li>
+									<li>Random Forest (RF)</li>
+									<pre><code><b>#TF-IDF</b>
+vectorizer = TfidfVectorizer(max_features=5000)#take 5k
+X = vectorizer.fit_transform(df_cleaned["Cleaned Review"])
+y = df_cleaned["Sentiment"]
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+										
+<b>#Train</b>
+models = {
+	"Logistic Regression": LogisticRegression(max_iter=200),
+	"Random Forest": RandomForestClassifier(n_estimators=100, random_state=42),
+	"Naive Bayes": MultinomialNB()
+}
+results = {}
+for model_name, model in models.items():
+	print(f"Training {model_name}...")
+	model.fit(X_train, y_train)
+	y_pred = model.predict(X_test)
+	accuracy = accuracy_score(y_test, y_pred)
+	results[model_name] = {
+		"model": model,
+		"accuracy": accuracy,
+		"classification_report": classification_report(y_test, y_pred, digits=4),
+		"confusion_matrix": confusion_matrix(y_test, y_pred)
+	}
+<b>#report</b>
+for model_name, result in results.items():
+	print(f"\n {model_name} Classification Report:\n")
+	print(result["classification_report"])
+	print("="*80)</code></pre>
+									<span class="image fit"><img src="visual/review15.png" alt="" /></span>
+									<span class="image fit"><img src="visual/review16.png" alt="" /></span>
+									<div class="box">
+										<p>Based on the comparative analysis, <b>Logistic Regression</b> performs well overall, particularly for the Positive class, but has a significant recall issue for Negative and Neutral classes. Naïve Bayes demonstrates high sensitivity in classifying Positive instances, but performs poorly in other categories, making it unsuitable for datasets with class imbalance. Random Forest provides a balanced trade-off between precision and recall but struggles with the Neutral class, similar to Naïve Bayes.</p>
+									</div>
+
+									<hr />
+									<h2>Predictive Modeling</h2>
+									<h3>1.Feature Engineering</h3>
+									<li>Sentiment Features: Extracted polarity and subjectivity scores from reviews using TextBlob.
+									<li>Text Complexity: Calculated word count, sentence count, and average word length to capture review structure.</li>
+									<li>TF-IDF Vectorization: Converted review text into numerical features using the top 5,000 most relevant terms.</li>
+									<p></p>
+
+									<h3>2.Model Development</h3>
+									<li>Combined TF-IDF text features with structured numerical features (Rating, Polarity, Subjectivity, Word Count, and Average Word Length). 
+									<li>This feature set was then used as input for the Random Forest Classifier. 
+									<li>The dataset was partitioned into training (80%) and testing (20%) subsets using stratified sampling. 
+									<li>The model was trained with 100 estimators and a fixed random seed for reproducibility.</li>
+									<p></p>
+									<pre><code><b>#TextBlob</b>
+tm["Polarity"] = tm["Review Text"].apply(lambda x: TextBlob(x).sentiment.polarity)
+tm["Subjectivity"] = tm["Review Text"].apply(lambda x: TextBlob(x).sentiment.subjectivity)
+										
+<b>#complexity</b>
+tm["Word Count"] = tm["Review Text"].apply(lambda x: len(re.findall(r'\b\w+\b', x)))
+tm["Sentence Count"] = tm["Review Text"].apply(lambda x: len(re.split(r'[.!?]', x)))
+tm["Avg Word Length"] = tm["Review Text"].apply(lambda x: np.mean([len(word) for word in re.findall(r'\b\w+\b', x)]))
+							
+<b>#TF-IDF</b>
+vectorizer = TfidfVectorizer(max_features=5000)
+X_text = vectorizer.fit_transform(tm["Cleaned Review"])
+										
+<b>#combined features</b>
+X_features = np.hstack((X_text.toarray(), tm[["Rating", "Polarity", "Subjectivity", "Word Count", "Avg Word Length"]].values))
+y = tm["Recommended IND"]
+										
+<b>#data</b>
+X_train, X_test, y_train, y_test = train_test_split(X_features, y, test_size=0.2, random_state=42)
+										
+<b>#train</b>
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+										
+<b>#report</b>
+_pred = model.predict(X_test)
+print("Model Accuracy:", accuracy_score(y_test, y_pred))
+print("\nClassification Report:\n", classification_report(y_test, y_pred))</code></pre>
+
+									<h3>3.Model Performance</h3>
+									<span class="image fit"><img src="visual/review17.png" alt="" /></span>
+									<li><b>Overall Accuracy: 94%</b>
+									<li>Macro-Averaged F1-score: 89%
+									<li>Weighted-Averaged F1-score: 94%</li>
+									<p></p>
+									<div class="box">
+										<p>These results indicate that the Random Forest model effectively predicts product recommendations, with particularly strong performance for the majority class (Recommended IND = 1).</p>
+									</div>
+
+									
+									<hr />
+									<h2>Key Takeaways</h2>
+									<li><b>77.1% of reviews are positive,</b> with size and fit being the most commonly discussed factors.</li>
+									<li><b>Negative reviews often cite sizing issues, fabric quality, and returns,</b> which are key drivers of dissatisfaction.</li>
+									<li><b>Customers value comfort and material</b> as shown by frequent positive words like soft, flattering, and well-made.</li>
+									<li><b>Random Forest model achieved 94% accuracy</b> in predicting recommendations, but had lower recall for non-recommended items, highlighting class imbalance issues.</li>
+
+									<hr />
+									<h2>Business Implications</h2>
+									<li><b>Enhance product descriptions,</b> especially with more detailed sizing info, to reduce returns and increase satisfaction.</li>
+									<li><b>Encourage detailed customer reviews</b> to improve transparency and help future buyers make informed decisions.</li>
+									<li><b>Use review insights to guide inventory and marketing strategies,</b> ensuring high-demand items are well-stocked and promoted effectively.</li>
+									<li><b>Data-driven adjustments</b> in descriptions, engagement, and planning can increase sales, reduce return rates, and improve the overall customer experience.</li>
+
+									
+									<hr />
+									<h2>Tech Stack</h2>
+									<h4>Languages</h4>
+									<li><b>Python</b> – Core language for data processing, NLP, modeling, and visualization</li>
+
+									<h4> </h4>
+									<h4>Techniques & Tools</h4>
+									<li><b>Natural Language Processing (NLP)</b> – Sentiment scoring, keyword extraction, text cleaning</li>
+									<li><b>TF-IDF</b> – Converting text to numerical vectors for modeling</li>
+									<li><b>Topic Modeling (LDA)</b> – Identifying latent themes in customer reviews</li>
+									<li><b>Random Forest Classifier</b> – Predicting product recommendation with structured + text features</li>
+									<li><b>Evaluation Metrics</b> – Accuracy, Precision, Recall, F1-score, Confusion Matrix</li>
+
+									
+							<hr />
+							<ul class="actions fit">
+								<li><a href="index.html" class="button fit">Home Page</a></li>
+							</ul>
+
+							</section>
+					</div>
+
+				<!-- Footer -->
+					<footer id="footer">
+						
+						
+						<section>
+							<h3>Email</h3>
+							<p>dsivapra@uci.edu</p>
+						</section>
+						<section>
+							<h3>Social</h3>
+							<ul class="icons alt">
+								<li><a href="https://www.linkedin.com/in/diksha-sivaprasad" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+								<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+							</ul>
+						
+						</section>
+					</footer>
+
+				
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Sephora Product and Review Analysis</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Home Page</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="generic.html">Projects</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/diksha-sivaprasad" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+								
+									<h1>Sephora Product and Review Analysis
+									</h1>
+									
+									</header>
+									
+									<hr />
+									<h2>Objectives</h2>
+									<blockquote>
+										<li>Understand customer sentiment by analyzing reviews using machine learning to classify them as positive, negative, or neutral.</li>
+										<li>Identify key factors shaping opinions, such as brand perception, product effectiveness across skin tones, and the link between price and satisfaction.</li>
+										<li>Provide Sephora with actionable insights to improve product offerings, marketing strategies, and customer experience.</li>
+										<li>Build a personalized recommendation system that suggests relevant skincare and beauty products based on user inputs (skin type, category, and budget).</li>
+                                        <li>Use TF-IDF and KNN models to deliver accurate, data-driven product suggestions that reduce decision fatigue and enhance satisfaction.</li>
+                                        
+									</blockquote>
+									
+									
+									<hr />
+									<h2>Methodology</h2>
+									<blockquote>
+                                        <li>Conducted EDA to uncover trends in sentiment by brand, price, product type, and skin type.</li>
+										<li>Cleaned and preprocessed review data through tokenization, stopword removal, and stemming.</li>
+										<li>Filtered out low-rated products and removed duplicates to ensure data quality.</li>
+										<li>Engineered features by combining key product attributes for improved similarity detection.</li>
+										<li>Applied TF-IDF Vectorization and KNN with cosine similarity to build the recommendation engine.</li>
+										<li>Used sentiment analysis to classify reviews and extract themes like hydration, fit, and effectiveness.</li>
+										<li>Evaluated model performance using a train-test split and selected the best-performing models based on accuracy and relevance.</li>
+										
+									</blockquote>
+									
+									
+
+									<hr />
+									<h2>Data Overview</h2>
+									<dl>
+										<dt>Data Source</dt>
+										<ul class="actions">
+											<li><a href="https://www.kaggle.com/datasets/nadyinky/sephora-products-and-skincare-reviews" class="button primary icon solid fa-search">Kaggle: Sephora Dataset</a></li>
+										</ul>
+										<dd>
+											<p>The Sephora Products and Skincare Reviews dataset from Kaggle includes detailed information on beauty and skincare products sold at Sephora.
+                                            </p>
+
+                                        </dd>
+										<dt>Key Data Points</dt>
+										<dd>
+                                            <p>Product name, brand name, price (in USD), skin type, category classifications, user reviews, and ratings 
+                                                
+                                            </p>
+										</dd>
+										<dt>Data Dictionary</dt>
+										<dd>
+										<div class="table-wrapper">
+											<table>
+											<thead>
+												<tr>
+												<th>Variable</th>
+												<th>Description</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+												<td>product_id</td>
+												<td>Unique identifier for each product.</td>
+												</tr>
+												<tr>
+												<td>product_name</td>
+												<td>Name of the Sephora product.</td>
+												</tr>
+												<tr>
+												<td>brand</td>
+												<td>Brand name of the product.</td>
+												</tr>
+												<tr>
+												<td>price</td>
+												<td>Retail price of the product (USD or local currency).</td>
+												</tr>
+												<tr>
+												<td>rating</td>
+												<td>Average star rating (1–5) from users.</td>
+												</tr>
+												<tr>
+												<td>review_id</td>
+												<td>Unique identifier for each user review.</td>
+												</tr>
+												<tr>
+												<td>review_title</td>
+												<td>Title or summary of the user’s review.</td>
+												</tr>
+												<tr>
+												<td>review_text</td>
+												<td>Full text content of the user’s review.</td>
+												</tr>
+												<tr>
+												<td>review_rating</td>
+												<td>Star rating given by the reviewer (1–5).</td>
+												</tr>
+												<tr>
+												<td>is_recommended</td>
+												<td>Binary flag: 1 if reviewer recommends the product, 0 otherwise.</td>
+												</tr>
+												<tr>
+												<td>skin_type</td>
+												<td>Self-reported skin type of the reviewer (e.g., oily, dry).</td>
+												</tr>
+												<tr>
+												<td>hair_color</td>
+												<td>Self-reported hair color of the reviewer (categorical).</td>
+												</tr>
+												<tr>
+												<td>review_date</td>
+												<td>Date when the review was submitted.</td>
+												</tr>
+											</tbody>
+											</table>
+										</div>
+										</dd>
+
+									<h2>Data Cleaning</h2>
+										<li>Randomized subset of 100,000 data points from the original 1M+ dataset.</li>
+                                        <li>Dropped missing values and duplicates.</li>
+                                        <li>Recommendation System: Filtered ratings with 4 stars and above.</li>
+										</p>
+									<div class="box alt">
+										
+											
+									</div>
+									<h2>Sentiment Analysis</h2>
+									<dt>Sentiment Analysis by Reviews</dt>
+									<p style="margin-top: -10px; font-size: 16px; color: #555;">
+                                        <ul>
+                                        <li>Negative reviews are often longer and more detailed, suggesting that dissatisfied customers provide more in-depth feedback.</li>
+                                        <li>Brands like <strong>CLINIQUE</strong> and <strong>Youth To The People</strong> receive higher positive sentiment, indicating an opportunity to replicate their success factors across other brands.</li>
+                                        </ul>
+                                              
+									<div class="box alt">
+										<div class="row gtr-50 gtr-uniform">
+										<div class="col-4"><span class="image fit"><img src="Sep_graph_1.png" alt="Sep Graph 1"  style="width: 900px;" />
+										</span></div>
+											
+										</div>
+											
+									</div>
+
+										<dt>Sentiment Analysis by Skin Type</dt>
+										<p style="margin-top: -10px; font-size: 16px; color: #555;">
+											<ul>
+                                                <li>
+                                                  <strong>Dry Skin:</strong> Mixed reviews with frequent dryness complaints.  
+                                                  The brand could explore a more hydrating formula to address these concerns.
+                                                </li>
+                                                <li>
+                                                  <strong>Oily Skin:</strong> Mostly positive reviews.  
+                                                  The lightweight, non-greasy texture is a strong selling point.
+                                                </li>
+                                              </ul>
+                                              
+                                              <div class="box alt">
+                                                <div class="row gtr-50 gtr-uniform">
+                                                    <div class="col-4"><span class="image fit"><img src="Sep_graph_2.png" alt="Sep Graph 2"  style="width: 900px;" />
+                                                    </span></div>  
+										
+											
+											</div>
+											
+										</div>
+										
+										<dt>Sentiment Analysis by Brands</dt>
+										<p style="margin-top: -10px; font-size: 16px; color: #555;">
+											<ul>
+                                                <li>
+                                                  <strong>Price ≠ Positive Sentiment:</strong> La Mer’s mixed reviews show that luxury doesn’t guarantee satisfaction.
+                                                </li>
+                                                <li>
+                                                  <strong>Brand Loyalty Opportunity:</strong> Bobbi Brown and other top-rated brands can leverage positive sentiment to boost loyalty and refine marketing strategies.
+                                                </li>
+                                              </ul>
+                                              
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<div class="col-4"><span class="image fit"><img src="Sep_graph_3.png" alt="Sep Graph 3"  style="width: 900px;" />
+												</span></div>
+											
+											</div>
+
+										<dt>Sentiment Analysis by Price</dt>
+										<p style="margin-top: -10px; font-size: 16px; color: #555;">
+											<ul>
+                                                <li>
+                                                  <strong>Luxury brands:</strong> Should improve customer satisfaction to justify premium pricing, as high price doesn’t always translate to high sentiment (e.g., La Mer).
+                                                </li>
+                                                <li>
+                                                  <strong>Top-rated brands:</strong> Brands like <strong>Bobbi Brown</strong> and <strong>Shiseido</strong> can leverage strong sentiment to boost loyalty and explore premium product lines.
+                                                </li>
+                                              </ul>
+                                              
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<div class="col-4"><span class="image fit"><img src="Sep_graph_4.png" alt="Sep Graph 4"  style="width: 900px;" />
+												</span></div>
+											
+											</div>
+
+										</div>
+
+										<h2>Recommendation System</h2>
+
+                                        <dt>Data Processing & Feature Engineering (TF-IDF Vectorization)</dt>
+                                        <ul>
+                                        <li>Combines important text features: <code>brand_name</code>, <code>skin_type</code>, <code>secondary_category</code></li>
+                                        <li>Uses TF-IDF Vectorizer to convert text data into numerical vectors</li>
+                                        <li>Helps the model understand text-based similarities between products</li>
+                                        </ul>
+
+                                        <dt>Finding Similar Products using KNN</dt>
+                                        <ul>
+                                        <li>Uses K-Nearest Neighbors (KNN) with cosine similarity</li>
+                                        <li>Finds the most similar products based on the vectorized features</li>
+                                        <li>Computes top 5 nearest neighbors for each product</li>
+                                        </ul>
+
+										<div class="box alt">
+											<div class="row gtr-50 gtr-uniform">
+												<div class="col-4"><span class="image fit"><img src="Sep_graph_5.png" alt="Sep Graph 5"  style="width: 700px;" />
+												</span></div>
+											
+											</div>
+									
+										</div>
+
+                                        <dt>Recommendation Logic</dt>
+                                        <ul>
+                                          <li>Filters products based on personalized inputs such as <code>skin_type</code>, <code>max_price</code>, and <code>product_category</code></li>
+                                          <li>Leverages KNN similarity results to suggest closely matched alternatives</li>
+                                          <li>Eliminates duplicate entries and ranks products by price (highest to lowest)</li>
+                                          <li>Returns the top 5 most relevant and affordable product recommendations</li>
+                                        </ul>
+                                        
+                                        <div class="box alt">
+                                          <div class="row gtr-50 gtr-uniform">
+                                            <!-- First Image -->
+                                            <div class="col-12">
+                                              <span class="image fit">
+                                                <img src="Sep_graph_6.png" alt="Sep Graph 6" style="width: 900px;" />
+                                              </span>
+                                            </div>
+                                        
+                                            <!-- Second Image -->
+                                            <div class="col-12">
+                                              <span class="image fit">
+                                                <img src="Sep_graph_7.png" alt="Sep Graph 7" style="width: 900px;" />
+                                              </span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        
+										
+										</div>
+
+										<h2>Conclusions</h2>
+										<blockquote>
+                                        <dt>Recommendation System</dt>
+                                        <ul>
+                                        <li>Filters products based on individual preferences: <strong>skin type</strong>, <strong>budget</strong>, and <strong>preferred product category</strong></li>
+                                        <li>Suggests top 5 alternatives using KNN-based similarity scoring</li>
+                                        <li>Enhances the shopping experience with personalized, data-backed recommendations</li>
+                                        </ul>
+
+                                        <dt>Sentiment Analysis</dt>
+                                        <ul>
+                                        <li>Positive sentiment is highest among <strong>oily skin</strong> users, indicating strong product satisfaction within this group</li>
+                                        <li>Luxury pricing does not necessarily lead to higher satisfaction — effectiveness matters more than cost</li>
+                                        <li>Brands should enhance formulations for <strong>dry skin</strong> users to address frequent complaints</li>
+                                        <li>Top-performing brands can reinforce loyalty and brand equity through consistent product quality and customer engagement</li>
+                                        </ul>
+
+                                        <dt>Next Steps</dt>
+                                        <ul>
+                                        <li>Explore incorporating more review-based features such as sentiment trends over time</li>
+                                        <li>Integrate user demographics or skin concerns (e.g., acne, sensitivity) for deeper personalization</li>
+                                        <li>Test real-time product recommendations on a sample user base to evaluate impact</li>
+                                        </ul>
+										</blockquote>
+											
+											</div>
+
+
+
+										</div>
+
+
+									</dl>

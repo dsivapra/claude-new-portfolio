@@ -1,0 +1,32 @@
+Instructions for My Portfolio,   - Make separate pop ups or pages for each of my projects instead of directing it to my initial websites
+- Connect with me should send them to my linkedin: https://www.linkedin.com/in/diksha-sivaprasad/
+- I need the ombre design on the background to appear on the top with my main introduction.
+- Remove the dashboard on the first page and shift everything from About Me onwards to that space.
+- On the header, I want to change Diksha to Home, and have About Me, Data Projects, Marketing, Get in Touch
+- You my information before to populate my experience section into shorter digestible  summaries:  Virstack | Business Analyst                                                                                                                                     Irvine, CA | October 2025 - Present
+	•	Deploying client specific virtual AI agents within an internal automation platform, designing conversational flows that improved front line customer support interactions and reduced reliance on traditional outdated IVR systems 
+	•	Built and automated project tracking AI workflows in Airtable and JIRA to streamline process improvement, support prioritization, improve delivery visibility, and enable data-informed decision-making across cross-functional teams
+	•	Collaborate with developers and designers using JIRA and Figma to plan sprints, document features, and build wireframes for mobile and web application development, enhancing overall product design and user experience
+
+Seed Consulting Group | Project Consultant                                                                                                   Irvine, CA | September 2025 - Present
+	•	Built an AI-powered sponsorship outreach platform using GPT-4o-mini and a custom RAG pipeline, transforming a static playbook into a dynamic decision-support tool with a chatbot, for a nonprofit organization based in San Diego
+
+Bosch | Business Analyst Intern                                                                                                                         Irvine, CA | January 2025 - June 2025
+	•	Improved supply chain and inventory planning accuracy by 13% by developing predictive models in Python, SQL, and Power BI, enabling more consistent inventory planning across US regions
+	•	Built advanced forecasting models (ARIMA, XGBoost, Prophet, Cosine Similarity) to predict SKU-level product launch demand, increasing forecast precision and revealing key drivers that shaped go-to-market decisions
+	•	Delivered Power BI dashboards and clear stakeholder-ready summaries, enabling non-technical teams to adjust messaging and planning strategies based on real-time demand signals and competitor trends
+
+Karma Automotive | Project Consultant                                                                                                       Irvine, CA | January 2025 - March 2025
+	•	Identified and evaluated 20+ strategic EV partnerships by conducting stakeholder interviews, market research, and SQL-based analysis, supporting the expansion of EV charging infrastructure across Southern California
+	•	Improved targeting and effectiveness of EV workforce initiatives by building a SQL-based partner database and collaborating with marketing leadership to design data-sharing and measurement frameworks that informed data-driven messaging and community engagement
+
+Bayut and Dubizzle | Product Marketing Analyst                                                                                               Dubai, UAE | July 2021 - May 2023
+	•	Achieved a 30% increase in advertising campaign engagement by optimizing content strategy across CMS platforms and social channels (Instagram, TikTok, Facebook) in a fast-paced B2C tech environment, aligning with performance analytics to strengthen audience targeting
+	•	Collaborated across marketing, design, engineering, and product teams to analyze paid ad campaigns during FIFA World Cup 2022 using SQL and Excel, delivering weekly performance insights that led to a 12% boost in ad engagement and informed platform feature enhancements
+	•	Delivered a 10% increase in audience reach on key products (Search 2.0, Agent Reviews, TruCheck™) by analyzing engagement metrics, conducting user interviews, and maintaining documentation to refine product strategy, and drive customer-focused improvements
+
+LexisNexis | Media Intelligence Analyst Intern                                                                                          Dubai, UAE | November 2020 - July 2021
+	•	Delivered 30+ campaign intelligence reports by analyzing brand sentiment, coverage volume, and social listening data using Nexis Newsdesk, Excel, and Looker Studio, enabling clients to adjust messaging and improve marketing strategies based on real-time insights
+	•	Generated competitive intelligence and media analytics reports for high-profile clients, including the UAE Ministry of Interior, Emirates Global Aluminum, Qatar Library, Tasaki Jewelry UK, providing recommendations to enhance brand positioning to improve public sentiment
+	•	Developed internal social listening and analytics dashboards that tracked campaign lifecycle metrics across earned media, and translated insights into strategic playbooks for client marketing teams, and performed due diligence and regulatory compliance checks for new lead generation
+

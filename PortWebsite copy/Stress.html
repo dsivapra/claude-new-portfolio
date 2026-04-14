@@ -1,0 +1,387 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Student Stress Level Predictions</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<a href="index.html" class="logo">Home Page</a>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul class="links">
+							<li class="active"><a href="generic.html">Projects</a></li>
+						</ul>
+						<ul class="icons">
+							<li><a href="https://www.linkedin.com/in/diksha-sivaprasad" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+							<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<section class="post">
+								<header class="major">
+								
+									<h1>Student Stress Level Predictions
+									</h1>
+									
+									</header>
+									
+									<hr />
+									<h2>Objectives</h2>
+									<blockquote>
+                                        <li>Address the rising mental health challenges experienced by students in academic settings</li>
+                                        <li>Identify key stress-driving factors across psychological, social, and academic domains</li>
+                                        <li>Understand how various lifestyle habits, academic pressures, and interpersonal dynamics influence stress</li>
+                                        <li>Help educators and institutions enhance curricula and support systems based on data-driven findings</li>
+                                        <li>Provide actionable insights to guide the development of stress-management interventions and wellness programs</li>
+                                        <li>Raise awareness among policymakers and school administrators about the urgency of student mental health</li>
+                                        
+									</blockquote>
+									
+									
+									<hr />
+									<h2>Methodology</h2>
+									<blockquote>
+                                        <li>Utilized a Kaggle dataset with 1100 entries and 21 features covering psychological, physiological, environmental, academic, and social factors</li>
+                                        <li>Performed exploratory data analysis (EDA) to validate data quality — no missing values or outliers were found</li>
+                                        <li>Used correlation analysis and Variance Inflation Factor (VIF) to identify key variables and address multicollinearity</li>
+                                        <li>Split data into 80% training and 20% testing sets, and used 10-fold cross-validation for reliable model evaluation</li>
+                                        <li>Trained Decision Tree, Naïve Bayes, and SVM models to classify stress levels</li>
+                                        <li>Tested four modeling strategies: no preprocessing, PCA for feature reduction, removal of correlated variables, and parameter tuning via Grid Search</li>
+                                        <li>Selected the best model based on test accuracy and generalization capability</li>
+                                        <li>Identified depression, academic performance, and self-esteem as the top contributors to student stress</li>
+										
+									</blockquote>
+									
+									
+
+									<hr />
+									<h2>Data Overview</h2>
+									<dl>
+										<dt>Data Source</dt>
+										<ul class="actions">
+											<li><a href="https://www.kaggle.com/datasets/rxnach/student-stress-factors-a-comprehensive-analysis" class="button primary icon solid fa-search">Kaggle: Stress Factors Dataset</a></li>
+										</ul>
+										<dd>
+											<p>This dataset provides insights into student stress levels based on psychological, physiological, academic, social, and environmental factors. It includes 1,100 records and 21 features, with no missing values or outliers. Ideal for classification and correlation analysis, it supports exploring what most impacts student stress.
+                                            </p>
+
+                                        </dd>
+										<dt>Key Data Points</dt>
+										<dd>
+                                            <p>Product name, brand name, price (in USD), skin type, category classifications, user reviews, and ratings 
+                                                
+                                            </p>
+										</dd>
+										<dt>Data Dictionary</dt>
+										<dd>
+                                            <p>
+                                                <div class="table-wrapper">
+                                                  <table>
+                                                    <thead>
+                                                      <tr>
+                                                        <th>Variable</th>
+                                                        <th>Description</th>
+                                                      </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                      <tr>
+                                                        <td>stress_level</td>
+                                                        <td>Target variable indicating stress level categorized as low, medium, or high.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>anxiety_level</td>
+                                                        <td>Self-reported anxiety level of the student.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>self_esteem</td>
+                                                        <td>Score reflecting the student's perceived self-worth and confidence.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>mental_health_history</td>
+                                                        <td>Indicates whether the student has a prior history of mental health issues.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>depression</td>
+                                                        <td>Level of depressive symptoms reported by the student.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>headache</td>
+                                                        <td>Frequency of headaches experienced by the student.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>blood_pressure</td>
+                                                        <td>Reported blood pressure levels.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>sleep_quality</td>
+                                                        <td>Self-assessed quality of sleep.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>breathing_problem</td>
+                                                        <td>Presence of respiratory issues.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>noise_level</td>
+                                                        <td>Level of noise in the student’s living environment.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>living_conditions</td>
+                                                        <td>General quality of the student’s housing and surroundings.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>safety</td>
+                                                        <td>Perceived safety in the student’s environment.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>basic_needs</td>
+                                                        <td>Accessibility to essentials like food, shelter, and hygiene.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>academic_performance</td>
+                                                        <td>Self-reported academic success or failure.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>study_load</td>
+                                                        <td>Amount of academic work and assignments.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>teacher_student_relationship</td>
+                                                        <td>Quality of interaction between teachers and the student.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>future_career_concerns</td>
+                                                        <td>Level of concern regarding career prospects post-graduation.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>social_support</td>
+                                                        <td>Availability of emotional and practical support from peers and family.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>peer_pressure</td>
+                                                        <td>Degree of pressure from peers to conform or perform.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>extracurricular_activities</td>
+                                                        <td>Involvement in non-academic clubs, sports, or hobbies.</td>
+                                                      </tr>
+                                                      <tr>
+                                                        <td>bullying</td>
+                                                        <td>Exposure to verbal, physical, or psychological harassment.</td>
+                                                      </tr>
+                                                    </tbody>
+                                                  </table>
+                                                </div>
+                                              </p>
+                                              
+										<dt>Data Pre-processing</dt>
+										<p style="margin-top: -10px; font-size: 16px; color: #555;">
+											<li><strong>Missing Data Check:</strong> Performed a column-wise scan for missing values; confirmed that the dataset was fully complete with no missing entries.</li>
+                                            <li><strong>Outlier Detection:</strong> Applied the z-score method to all numeric features using a 3-standard-deviation threshold.</li>
+                                            <li><strong>Result:</strong> No outliers were detected, indicating all data points fall within a normal range and are suitable for modeling.</li>
+                                            <li><strong>Conclusion:</strong> The dataset required no removal or imputation, ensuring a clean and reliable foundation for further analysis.</li>
+										  </p>
+										<div class="box alt">
+										
+											
+										</div>
+
+										<section>
+                                            <dt>Relationship Between Target Variable and Independent Variables</dt>
+                                            <p style="margin-top: -10px; font-size: 16px; color: #555;">
+
+                                              <!-- Text Content -->
+                                              <div style="flex: 1; min-width: 300px;">
+                                                <p><strong>Key Insight:</strong><br>
+                                                Our correlation analysis revealed strong associations between stress levels and a range of independent factors, including depression, self-esteem, academic performance, and future career concerns.</p>
+                                          
+                                                <p><strong>Why It Matters:</strong><br>
+                                                These statistically significant relationships validate the quality and depth of the dataset, making it a strong foundation for further predictive modeling and insight generation.</p>
+                                          
+                                                <p><strong>Next Step:</strong><br>
+                                                Prioritize isolating the most influential predictors of student stress to inform actionable strategies for educational institutions, support services, and mental health interventions.</p>
+                                              </div>
+                                          
+                                              <!-- Chart Image -->
+                                              <div style="display: flex; justify-content: center; margin-top: 2rem;">
+                                                <img src="Stress_graph_1.png" alt="Bar chart showing correlation of features with stress level" style="max-width: 90%; height: auto; border: 1px solid #ddd; border-radius: 6px;">
+                                              </div>
+                                            </section>
+                                          </p>
+                                            <section>
+                                                <dt>Relationship Between Features</dt>
+                                                      The Variance Inflation Factor (VIF) technique was applied to detect and address multicollinearity among independent variables by analyzing their correlation values.
+                                                    </p>
+                                                  
+                                                    <!-- First Image -->
+                                                    <div style="display: flex; justify-content: center; margin-top: 2rem;">
+                                                      <img src="Stress_graph_3.png" alt="VIF Table" style="max-width: 70%; height: auto; border: 1px solid #ccc; border-radius: 6px;">
+                                                    </div>
+                                                  
+                                                    <!-- Second Image -->
+                                                    <div style="display: flex; justify-content: center; margin-top: 2rem;">
+                                                      <img src="Stress_graph_2.png" alt="Correlation Matrix Heatmap" style="max-width: 90%; height: auto; border: 1px solid #ccc; border-radius: 6px;">
+                                                    </div>
+                                                  </section>
+                                                  
+                                                  <p style="margin-top: -10px; font-size: 16px; color: #555;">
+                                                  <section>
+                                                    <h2>Analysis Summary</h2>
+
+                                                    <!-- Text Block -->
+                                                    <div style="max-width: 800px">
+                                                      <p><strong>Validation Setup:</strong><br>
+                                                      Data was split into 80% training and 20% testing, with 10-fold cross-validation used for robust model evaluation.</p>
+                                                  
+                                                      <p><strong>Machine Learning Algorithms:</strong><br>
+                                                      Decision Tree, Naïve Bayes, and Support Vector Machine (SVM) models were implemented for classification.</p>
+                                                  
+                                                      <p style="margin-bottom: 0.3em;"><strong>Benchmarks:</strong></p>
+                                                      <ul style="margin-top: 0; margin-bottom: 0.3em; padding-left: 1.2em;">
+                                                        <li>No Pre-processing</li>
+                                                        <li>PCA for Feature Reduction</li>
+                                                        <li>Removing Correlated Variables</li>
+                                                        <li>Parameter Optimization with Grid Search</li>
+                                                      </ul>
+                                                      
+                                                      <p style="margin-top: 0.3em;"><strong>Dataset Balance:</strong><br>
+                                                      The bar chart shows that stress levels (low, medium, high) are evenly distributed, ensuring a fair and unbiased classification process.</p>
+                                                      
+                                                    <!-- Image Block Below -->
+                                                    <div style="display: flex; justify-content: center; margin-top: 2rem;">
+                                                      <img src="Stress_graph_4.png" alt="Bar chart showing distribution of stress levels" style="max-width: 90%; height: auto; border: 1px solid #ccc; border-radius: 6px;">
+                                                    </div>
+                                                  </section>
+                                                  <br>
+
+                                                  <section>
+                                                    <div style="margin-bottom: 0.8em;">
+                                                      <dt><strong>Baseline Models</strong></dt>
+                                                    </div>
+                                                  
+                                                    <p>
+                                                      Four benchmarks were performed:
+                                                      Benchmark 1 (<strong>no preprocessing</strong>),
+                                                      Benchmark 2 (<strong>PCA feature reduction</strong>),
+                                                      Benchmark 3 (<strong>removal of highly correlated variables</strong>), and
+                                                      Benchmark 4 (<strong>parameter optimization</strong>).
+                                                    </p>
+                                                  
+                                                    <div style="display: flex; justify-content: center; margin-top: 2rem;">
+                                                      <img src="Stress_graph_5.png" alt="Benchmark Results Table" style="max-width: 90%; height: auto; border: 1px solid #ccc; border-radius: 6px;">
+                                                    </div>
+                                                  </section>
+                                                  
+                                                  
+                                                  
+
+                                                  <br>
+
+                                          <section>
+                                            <dt>Important Features</dt>
+                                          
+                                            <!-- Text Block -->
+                                            <div style="max-width: 800px">
+                                              <li><strong>Academic Performance:</strong>
+                                              Negatively correlated with stress levels, indicating that poor performance increases stress.</li>
+                                          
+                                              <li><strong>Depression:</strong>
+                                              Strongly positively correlated, showing a direct link to higher stress levels.</li>
+                                          
+                                              <li><strong>Self-Esteem:</strong>
+                                              Negatively correlated, where lower self-esteem leads to greater stress.</li>
+                                            </div>
+                                          
+                                            <!-- Centered Image Below -->
+                                            <div style="display: flex; justify-content: center; margin-top: 2rem;">
+                                              <img src="Stress_graph_6.png" alt="Feature Importance from Decision Tree" style="max-width: 90%; height: auto; border: 1px solid #ccc; border-radius: 6px;">
+                                            </div>
+                                          </section>
+                                          
+                                          <br>
+                                          <section>
+                                            <h2>Violin Plot – Density Measures</h2>
+                                          
+                                            <!-- Description -->
+                                            <div style="max-width: 800px">
+                                              <p>
+                                                These violin plots illustrate how the distributions of three key features—<strong>academic performance</strong>, 
+                                                <strong>depression</strong>, and <strong>self-esteem</strong>—vary across different stress levels (low = 0, medium = 1, high = 2).
+                                              </p>
+                                              <p>
+                                              
+                                                
+                                                  <li><strong>Academic performance</strong> tends to decrease as stress level increases, with lower values concentrated in higher stress categories.</li>
+                                                  <li><strong>Depression scores</strong> rise with stress level, showing a clear upward shift in the density distribution.</li>
+                                                  <li><strong>Self-esteem</strong> drops significantly as stress level increases, indicating an inverse relationship with stress.</li>
+                                                
+                                              </p>
+                                              <p>
+                                                These patterns confirm that these three features are highly predictive of student stress and align with earlier correlation and feature importance analyses.
+                                              </p>
+                                            </div>
+                                          
+                                            <!-- Image Below -->
+                                            <div style="display: flex; justify-content: center; margin-top: 2rem;">
+                                              <img src="Stress_graph_7.png" alt="Violin plot showing feature distributions by stress level" style="max-width: 100%; height: auto; border: 1px solid #ccc; border-radius: 6px;">
+                                            </div>
+                                          </section>
+                                          <br>
+                                          <section>
+                                            <h2>Recommendations</h2>
+                                            <blockquote>
+                                            <ul>
+                                              <li><strong>Academic Performance</strong>
+                                                <ul>
+                                                  <li>Practice structured time management to balance academics and personal life.</li>
+                                                  <li>Use effective study techniques like active recall, spaced repetition, and peer discussions.</li>
+                                                  <li>Utilize campus resources such as tutoring centers and academic advisors for support.</li>
+                                                </ul>
+                                              </li>
+                                              <li><strong>Depression</strong>
+                                                <ul>
+                                                  <li>Seek regular mental health support from counselors or therapists.</li>
+                                                  <li>Incorporate stress-relief activities like mindfulness, physical exercise, or creative outlets.</li>
+                                                  <li>Foster social connections with peers, mentors, and support groups.</li>
+                                                </ul>
+                                              </li>
+                                              <li><strong>Self-Esteem</strong>
+                                                <ul>
+                                                  <li>Reinforce self-worth by reflecting on personal achievements and strengths.</li>
+                                                  <li>Engage in skill-building activities to boost confidence and mastery.</li>
+                                                  <li>Focus on personal growth instead of comparing yourself to others.</li>
+                                                </ul>
+                                              </li>
+                                            </ul>
+                                          </blockquote>
+
+                                            <h2>Conclusions</h2>
+                                            <blockquote>
+                                            <ul>
+                                              <li>Correlation and feature importance analyses confirmed that academic performance, depression, and self-esteem are critical predictors of student stress.</li>
+                                              <li>The dataset showed strong and interpretable relationships, validating its use for stress modeling and intervention strategies.</li>
+                                              <li>Insights from the analysis can help educational institutions design targeted programs to improve student well-being and academic outcomes.</li>
+                                            </ul>
+                                          </blockquote>
+                                          </section>
+                                        
+                                          
+
+
+										
+									</dl>
