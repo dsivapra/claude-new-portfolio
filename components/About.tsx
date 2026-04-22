@@ -25,54 +25,14 @@ const Log = {
 }
 
 const skills = [
-  {
-    title: 'GTM Strategy',
-    type: 'gradient',
-    gradient: 'from-purple-600 to-purple-300',
-    textColor: 'text-slate-700',
-  },
-  {
-    title: 'Storytelling',
-    type: 'solid',
-    color: 'bg-yellow-200',
-    textColor: 'text-slate-900',
-  },
-  {
-    title: 'Marketing Analytics',
-    type: 'solid',
-    color: 'bg-blue-200',
-    textColor: 'text-slate-900',
-  },
-  {
-    title: 'Product Market',
-    type: 'gradient',
-    gradient: 'from-blue-600 to-blue-300',
-    textColor: 'text-slate-700',
-  },
-  {
-    title: 'Power BI',
-    type: 'gradient',
-    gradient: 'from-purple-600 to-purple-300',
-    textColor: 'text-slate-700',
-  },
-  {
-    title: 'A/B Testing',
-    type: 'solid',
-    color: 'bg-yellow-200',
-    textColor: 'text-slate-900',
-  },
-  {
-    title: 'Customer Insights',
-    type: 'solid',
-    color: 'bg-purple-200',
-    textColor: 'text-slate-900',
-  },
-  {
-    title: 'Data Visualization',
-    type: 'gradient',
-    gradient: 'from-yellow-500 to-yellow-200',
-    textColor: 'text-slate-700',
-  },
+  { title: 'GTM Strategy',        type: 'gradient', gradient: 'from-purple-300 to-pink-200',   textColor: 'text-slate-800' },
+  { title: 'Storytelling',        type: 'solid',    color: 'bg-pink-100',                       textColor: 'text-slate-800' },
+  { title: 'Marketing Analytics', type: 'gradient', gradient: 'from-fuchsia-200 to-purple-200', textColor: 'text-slate-800' },
+  { title: 'Product Market',      type: 'solid',    color: 'bg-white/70',                       textColor: 'text-slate-800' },
+  { title: 'Power BI',            type: 'gradient', gradient: 'from-pink-300 to-fuchsia-200',   textColor: 'text-slate-800' },
+  { title: 'A/B Testing',         type: 'solid',    color: 'bg-purple-100',                     textColor: 'text-slate-800' },
+  { title: 'Customer Insights',   type: 'gradient', gradient: 'from-purple-200 to-pink-100',    textColor: 'text-slate-800' },
+  { title: 'Data Visualization',  type: 'solid',    color: 'bg-fuchsia-100',                    textColor: 'text-slate-800' },
 ]
 
 export default function About() {
@@ -83,25 +43,21 @@ export default function About() {
   }, [])
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-transparent bg-texture relative">
+    <section id="about" className="py-8 px-4 sm:px-6 lg:px-8 bg-transparent bg-texture relative">
+      
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
-            About Me
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+            Skills & Expertise
           </h2>
-          
-          {/* Decorative Elements */}
           <div className="absolute top-10 right-10 decorative-diamond opacity-20"></div>
           <div className="absolute bottom-10 left-10 decorative-squiggle opacity-15"></div>
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-            Data tells a story. Marketing gives it a voice. Automation makes it scale. I bring all three together, helping organizations make sense of their market, sharpen their product positioning, and build intelligent workflows that drive measurable outcomes.
-          </p>
         </motion.div>
 
         <div className="overflow-hidden relative py-4 px-2 sm:px-4">

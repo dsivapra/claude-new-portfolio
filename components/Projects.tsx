@@ -5,12 +5,13 @@ import { motion } from 'framer-motion'
 import { ExternalLink } from 'lucide-react'
 import { projects } from '@/data/projects'
 
-const featuredProject = projects.find((p) => p.featured)
-const otherProjects = projects.filter((p) => !p.featured)
-
 export default function Projects() {
+  const featuredProject = projects.find((p) => p.featured)
+  const otherProjects = projects.filter((p) => !p.featured)
+
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-transparent bg-texture relative">
+    <section id="projects" className="py-8 px-4 sm:px-6 lg:px-8 bg-transparent bg-texture relative">
+      
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -19,12 +20,12 @@ export default function Projects() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16 relative"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             My Projects
           </h2>
           <div className="absolute top-10 right-10 decorative-diamond opacity-20" />
           <div className="absolute bottom-10 left-10 decorative-squiggle opacity-15" />
-          <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-xl text-white/60 max-w-3xl mx-auto">
             Exploring data, building insights, and creating solutions that matter
           </p>
         </motion.div>
@@ -38,16 +39,16 @@ export default function Projects() {
             transition={{ duration: 0.8 }}
             className="mb-16"
           >
-            <div className="bg-gradient-to-br from-orange-50 to-pink-50 rounded-3xl p-8 md:p-12 shadow-2xl">
+            <div className="bg-white/8 border border-white/10 rounded-3xl p-8 md:p-12">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
                   <span className="inline-block px-4 py-2 bg-orange-500 text-white rounded-full text-sm font-semibold mb-4">
                     Featured Project
                   </span>
-                  <h3 className="text-3xl md:text-4xl font-bold mb-4 text-slate-800">
+                  <h3 className="text-3xl md:text-4xl font-bold mb-4 text-white">
                     {featuredProject.title}
                   </h3>
-                  <p className="text-lg text-slate-600 mb-6">
+                  <p className="text-lg text-white/65 mb-6">
                     {featuredProject.description}
                   </p>
                   <Link

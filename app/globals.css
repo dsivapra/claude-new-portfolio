@@ -33,6 +33,7 @@ body {
   overflow: hidden;
 }
 
+
 .bg-texture::before {
   content: '';
   position: absolute;

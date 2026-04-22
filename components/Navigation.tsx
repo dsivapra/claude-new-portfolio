@@ -46,16 +46,16 @@ export default function Navigation() {
   }, [])
 
   const navItems = [
-    { name: 'About Me', href: '#about', hash: true },
-    { name: 'Data Projects', href: '#projects', hash: true },
-    { name: 'Marketing', href: '#marketing', hash: true },
-    { name: 'Get in Touch', href: '#contact', hash: true },
+    { name: 'About', href: '/about', hash: false },
+    { name: 'Work', href: '#projects', hash: true },
+    { name: 'Contact', href: '#contact', hash: true },
   ]
 
-  const handleNavClick = (item: (typeof navItems)[0]) => {
+  const handleNavClick = (item: (typeof navItems)[0], e: React.MouseEvent) => {
     Log.info(`Navigation clicked: ${item.href}`)
     setIsMobileMenuOpen(false)
     if (item.hash && isHome) {
+      e.preventDefault()
       const element = document.querySelector(item.href)
       if (element) element.scrollIntoView({ behavior: 'smooth' })
     }
@@ -78,7 +78,7 @@ export default function Navigation() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Home
+              D/S
             </motion.span>
           </Link>
 
@@ -90,8 +90,7 @@ export default function Navigation() {
                   key={item.name}
                   href={item.href}
                   onClick={(e) => {
-                    e.preventDefault()
-                    handleNavClick(item)
+                    handleNavClick(item, e)
                   }}
                   className="text-white/80 hover:text-white transition-colors font-medium"
                   whileHover={{ y: -2 }}
@@ -140,7 +139,7 @@ export default function Navigation() {
                 className="block px-4 py-2 text-white hover:bg-slate-800 rounded-lg transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Home
+                D/S
               </Link>
               {navItems.map((item) =>
                 isHome ? (
@@ -148,8 +147,7 @@ export default function Navigation() {
                     key={item.name}
                     href={item.href}
                     onClick={(e) => {
-                      e.preventDefault()
-                      handleNavClick(item)
+                      handleNavClick(item, e)
                     }}
                     className="block px-4 py-2 text-white hover:bg-slate-800 rounded-lg transition-colors"
                   >

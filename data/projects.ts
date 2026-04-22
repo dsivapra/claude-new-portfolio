@@ -13,13 +13,30 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    id: 0,
+    title: 'The Byte Brief',
+    description: 'A twice-daily AI newsletter built to solve inbox overload — curated by Gemini, short enough to actually finish, delivered straight to your inbox.',
+    longDescription: 'Too many AI newsletters, not enough time. I was subscribed to all of them and still felt behind — so I built The Byte Brief for myself.\n\nTwice a day, it pulls from top RSS feeds and uses Google Gemini to surface what actually matters across four areas: Startups & Funding, Policy & Regulation, Agents & Automation, and AI Research. Each brief is structured to respect your time — four stories with a "Why it matters" line, a tools spotlight, a hype reality-check, and an audio version for when reading isn\'t on the cards.\n\nBuilt with Lovable, Supabase, Google Gemini, ElevenLabs, and Resend. Hosted on Vercel.',
+    image: '/images/ByteBrief.jpg',
+    link: 'https://the-byte-brief.vercel.app/',
+    featured: true,
+    role: 'Product Builder / Creator',
+    tech: ['Lovable', 'Supabase', 'Google Gemini', 'ElevenLabs API', 'Resend API', 'RSS Feeds', 'Vercel'],
+    outcomes: [
+      'Twice-daily AI newsletter with automated content curation via Gemini',
+      'Audio version generated with ElevenLabs API for on-the-go listening',
+      'End-to-end product: from problem to design, build, and deployment',
+      'Covers Startups & Funding, Policy, Agents & Automation, and AI Research',
+    ],
+  },
+  {
     id: 1,
     title: 'Predicting Uber Fare Prices',
     description: 'Using machine learning algorithms to understand the surge pricing model and provided ways to find cost-effective rides.',
     longDescription: 'Analyzed Uber fare data to uncover patterns in surge pricing and build predictive models that help riders find cost-effective options. Explored feature engineering, model comparison, and visualization of fare determinants across time, distance, and demand.',
     image: '/images/Uber.jpg',
     link: '/reports/Uber.html',
-    featured: true,
+    featured: false,
     role: 'Data Analyst',
     tech: ['Python', 'Pandas', 'Scikit-learn', 'Matplotlib', 'Seaborn', 'Jupyter'],
     outcomes: [

@@ -88,14 +88,15 @@ export default function Education() {
   }, [])
 
   return (
-    <section id="education" className="py-20 px-4 sm:px-6 lg:px-8 bg-transparent bg-texture relative">
+    <section id="education" className="py-8 px-4 sm:px-6 lg:px-8 bg-transparent bg-texture relative">
+      
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900 tracking-tight">
             Education
