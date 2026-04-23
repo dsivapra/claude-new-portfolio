@@ -56,6 +56,7 @@ export default function About() {
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Skills & Expertise
           </h2>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-orange-500 via-pink-500 to-rose-500 rounded-full mx-auto"></div>
           <div className="absolute top-10 right-10 decorative-diamond opacity-20"></div>
           <div className="absolute bottom-10 left-10 decorative-squiggle opacity-15"></div>
         </motion.div>

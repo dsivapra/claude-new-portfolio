@@ -97,7 +97,7 @@ export default function Experience() {
           transition={{ duration: 0.8 }}
           className="text-center mb-10"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Experience
           </h2>
           
@@ -107,63 +107,101 @@ export default function Experience() {
           <div className="w-24 h-1.5 bg-gradient-to-r from-orange-500 via-pink-500 to-rose-500 rounded-full mx-auto"></div>
         </motion.div>
 
-        <div className="space-y-4">
-          {experiences.map((exp, index) => {
-            const colors = [
-              { bg: 'bg-orange-500', hover: 'bg-orange-600', border: 'border-orange-200', accent: 'text-orange-600' },
-              { bg: 'bg-pink-500', hover: 'bg-pink-600', border: 'border-pink-200', accent: 'text-pink-600' },
-              { bg: 'bg-rose-500', hover: 'bg-rose-600', border: 'border-rose-200', accent: 'text-rose-600' },
-              { bg: 'bg-amber-500', hover: 'bg-amber-600', border: 'border-amber-200', accent: 'text-amber-600' },
-              { bg: 'bg-fuchsia-500', hover: 'bg-fuchsia-600', border: 'border-fuchsia-200', accent: 'text-fuchsia-600' },
-              { bg: 'bg-red-500', hover: 'bg-red-600', border: 'border-red-200', accent: 'text-red-600' },
-            ]
-            const color = colors[index % colors.length]
-            
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.08, duration: 0.5 }}
-                className="group relative"
-                whileHover={{ x: index % 2 === 0 ? 4 : -4 }}
-              >
-                <div className={`absolute -inset-0.5 bg-gradient-to-r ${color.bg} rounded-xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-300`}></div>
-                <div className={`relative bg-white rounded-xl p-8 border-2 ${color.border} hover:shadow-2xl transition-all duration-300 overflow-hidden`}>
-                  <div className={`absolute top-0 left-0 w-1 h-full ${color.bg} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-orange-100 to-pink-100 rounded-full -mr-12 -mt-12 opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                  <div className="relative z-10 flex items-start gap-6">
-                    <div className="flex-shrink-0">
-                      <motion.div 
-                        className={`w-14 h-14 rounded-xl ${color.bg} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300`}
-                        whileHover={{ rotate: [0, 10, -10, 10, 0], scale: 1.1 }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <DoodleBriefcase />
-                      </motion.div>
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex flex-wrap items-baseline gap-2 mb-2">
-                        <h3 className="text-xl font-semibold text-slate-900">{exp.title}</h3>
-                        <span className="text-slate-400">•</span>
-                        <p className={`text-lg font-medium ${color.accent}`}>{exp.company}</p>
-                      </div>
-                      <div className="flex items-center gap-3 text-slate-500 mb-4 text-sm">
-                        <span>{exp.location}</span>
-                        <span>•</span>
-                        <div className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
-                          <span>{exp.period}</span>
+        <div className="relative">
+          {/* Center vertical line */}
+          <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2 bg-gradient-to-b from-orange-400 via-pink-400 to-fuchsia-400 opacity-30" />
+
+          <div className="space-y-12">
+            {experiences.map((exp, index) => {
+              const dotColors = [
+                'bg-orange-500', 'bg-pink-500', 'bg-rose-500',
+                'bg-amber-500', 'bg-fuchsia-500', 'bg-red-500',
+              ]
+              const textColors = [
+                'text-orange-400', 'text-pink-400', 'text-rose-400',
+                'text-amber-400', 'text-fuchsia-400', 'text-red-400',
+              ]
+              const dot = dotColors[index % dotColors.length]
+              const accent = textColors[index % textColors.length]
+              const isLeft = index % 2 === 0
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: isLeft ? -24 : 24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.07, duration: 0.5 }}
+                  className="relative flex items-start md:grid md:grid-cols-[1fr_32px_1fr] gap-0"
+                >
+                  {/* Left side */}
+                  <div className={`hidden md:block ${isLeft ? 'pr-10 text-right' : ''}`}>
+                    {isLeft && (
+                      <>
+                        <div className="flex flex-wrap justify-end items-baseline gap-x-3 gap-y-1 mb-1">
+                          <span className={`font-semibold ${accent}`}>{exp.company}</span>
+                          <h3 className="text-lg font-bold text-white">{exp.title}</h3>
                         </div>
-                      </div>
-                      <p className="text-slate-600 leading-relaxed">{exp.summary}</p>
-                    </div>
+                        <div className="flex flex-wrap justify-end items-center gap-x-3 text-white/45 text-sm mb-3">
+                          <div className="flex items-center gap-1">
+                            <Calendar className="w-3.5 h-3.5" />
+                            <span>{exp.period}</span>
+                          </div>
+                          <span>·</span>
+                          <span>{exp.location}</span>
+                        </div>
+                        <p className="text-white/70 leading-relaxed text-sm">{exp.summary}</p>
+                      </>
+                    )}
                   </div>
-                </div>
-              </motion.div>
-            )
-          })}
+
+                  {/* Center dot */}
+                  <div className="hidden md:flex flex-col items-center pt-1.5">
+                    <div className={`w-4 h-4 rounded-full ${dot} shadow-lg ring-4 ring-white/10 flex-shrink-0`} />
+                  </div>
+
+                  {/* Right side */}
+                  <div className={`hidden md:block ${!isLeft ? 'pl-10' : ''}`}>
+                    {!isLeft && (
+                      <>
+                        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-1">
+                          <h3 className="text-lg font-bold text-white">{exp.title}</h3>
+                          <span className={`font-semibold ${accent}`}>{exp.company}</span>
+                        </div>
+                        <div className="flex flex-wrap items-center gap-x-3 text-white/45 text-sm mb-3">
+                          <span>{exp.location}</span>
+                          <span>·</span>
+                          <div className="flex items-center gap-1">
+                            <Calendar className="w-3.5 h-3.5" />
+                            <span>{exp.period}</span>
+                          </div>
+                        </div>
+                        <p className="text-white/70 leading-relaxed text-sm">{exp.summary}</p>
+                      </>
+                    )}
+                  </div>
+
+                  {/* Mobile layout — single column */}
+                  <div className="md:hidden pl-8 relative">
+                    <div className={`absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full ${dot} ring-4 ring-white/10`} />
+                    <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 mb-1">
+                      <h3 className="text-lg font-bold text-white">{exp.title}</h3>
+                      <span className={`font-semibold ${accent}`}>{exp.company}</span>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-x-3 text-white/45 text-sm mb-2">
+                      <span>{exp.location}</span>
+                      <span>·</span>
+                      <div className="flex items-center gap-1">
+                        <Calendar className="w-3.5 h-3.5" />
+                        <span>{exp.period}</span>
+                      </div>
+                    </div>
+                    <p className="text-white/70 leading-relaxed text-sm">{exp.summary}</p>
+                  </div>
+                </motion.div>
+              )
+            })}
+          </div>
         </div>
       </div>
     </section>

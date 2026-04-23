@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <main
       className="min-h-screen relative"
-      style={{ background: '#0d0818' }}
+      style={{ background: '#261440' }}
       onMouseMove={handleMouseMove}
     >
       {/* Fixed ambient gradient + mouse glow — client-only to avoid hydration mismatch */}

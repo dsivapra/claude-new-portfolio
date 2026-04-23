@@ -6,7 +6,7 @@ const outcomes = [
   {
     title: 'Data-Driven Strategy',
     description:
-      'Delivered 13% forecasting improvements at Bosch and 30% engagement lifts at Bayut by turning raw data into decisions teams could act on. Python, SQL, and Power BI are the tools — clear outcomes are the point.',
+      'Delivered 13% forecasting improvements at Bosch and 30% engagement lifts at Bayut by turning raw data into decisions teams could act on. Python, SQL, and Power BI are the tools. Clear outcomes are the point.',
     doodle: (
       <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
         <rect x="3" y="20" width="6" height="12" rx="1.5" stroke="#a855f7" strokeWidth="2" fill="none"/>
@@ -20,7 +20,7 @@ const outcomes = [
   {
     title: 'Product & Requirements',
     description:
-      'Starting with the pain point, not the solution. Talking to people, mapping what they actually need, and turning that into BRDs, PRDs, and wireframes that engineering can run with — as a Certified Scrum Product Owner.',
+      'Starting with the pain point, not the solution. Talking to people, mapping what they actually need, and turning that into BRDs, PRDs, and wireframes that engineering can run with. Certified Scrum Product Owner.',
     doodle: (
       <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
         <rect x="6" y="4" width="24" height="28" rx="3" stroke="#ec4899" strokeWidth="2" fill="none"/>
@@ -77,8 +77,9 @@ export default function WhatIBring() {
           transition={{ duration: 0.7 }}
           className="mb-10"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">What I Bring</h2>
-          <p className="text-white/55">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">What I Bring</h2>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-orange-500 via-pink-500 to-rose-500 rounded-full mb-4"></div>
+          <p className="text-white/75">
             Connecting data, strategy, and people to drive outcomes that actually move the needle.
           </p>
         </motion.div>

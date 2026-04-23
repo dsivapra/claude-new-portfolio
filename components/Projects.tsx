@@ -23,9 +23,10 @@ export default function Projects() {
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             My Projects
           </h2>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-orange-500 via-pink-500 to-rose-500 rounded-full mx-auto mb-4"></div>
           <div className="absolute top-10 right-10 decorative-diamond opacity-20" />
           <div className="absolute bottom-10 left-10 decorative-squiggle opacity-15" />
-          <p className="text-xl text-white/60 max-w-3xl mx-auto">
+          <p className="text-xl text-white/75 max-w-3xl mx-auto">
             Exploring data, building insights, and creating solutions that matter
           </p>
         </motion.div>
@@ -48,15 +49,15 @@ export default function Projects() {
                   <h3 className="text-3xl md:text-4xl font-bold mb-4 text-white">
                     {featuredProject.title}
                   </h3>
-                  <p className="text-lg text-white/65 mb-6">
+                  <p className="text-lg text-white/75 mb-6">
                     {featuredProject.description}
                   </p>
                   <Link
                     href={`/projects/${featuredProject.id}`}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-semibold transition-colors"
+                    className="vivarily-btn group inline-flex"
                   >
-                    View Project
-                    <ExternalLink className="w-5 h-5" />
+                    <span>VIEW PROJECT</span>
+                    <span className="vivarily-arrow group-hover:translate-x-1 transition-transform">›</span>
                   </Link>
                 </div>
                 <Link

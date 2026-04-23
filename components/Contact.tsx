@@ -31,7 +31,7 @@ export default function Contact() {
   }, [])
 
   return (
-    <section id="contact" className="py-8 px-4 sm:px-6 lg:px-8 bg-transparent bg-texture relative">
+    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-transparent bg-texture relative">
       
       <div className="max-w-4xl mx-auto">
         <motion.div
@@ -41,14 +41,15 @@ export default function Contact() {
           transition={{ duration: 0.8 }}
           className="text-center mb-8"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-3 text-white">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Get In Touch
           </h2>
+          <div className="w-24 h-1.5 bg-gradient-to-r from-orange-500 via-pink-500 to-rose-500 rounded-full mx-auto mb-4"></div>
 
           {/* Decorative Elements */}
           <div className="absolute top-10 left-10 decorative-diamond opacity-20"></div>
           <div className="absolute bottom-10 right-10 decorative-squiggle opacity-15"></div>
-          <p className="text-xl text-white/60 max-w-2xl mx-auto mb-0">
+          <p className="text-xl text-white/75 max-w-2xl mx-auto mb-0">
             I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
           </p>
         </motion.div>
@@ -91,7 +92,7 @@ export default function Contact() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center mt-12 text-white/35"
+          className="text-center mt-12 text-white/50"
         >
           <p>© {new Date().getFullYear()} Diksha Sivaprasad. All rights reserved.</p>
         </motion.div>

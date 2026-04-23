@@ -77,7 +77,7 @@ export default function Marketing() {
           {/* Decorative Elements */}
           <div className="absolute top-10 right-10 decorative-diamond opacity-20"></div>
           <div className="absolute bottom-10 left-10 decorative-squiggle opacity-15"></div>
-          <p className="text-xl text-white/60 max-w-3xl mx-auto">
+          <p className="text-xl text-white/75 max-w-3xl mx-auto">
             Driving growth through data-driven marketing strategies and campaign optimization
           </p>
         </motion.div>

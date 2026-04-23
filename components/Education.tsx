@@ -36,7 +36,7 @@ const Log = {
 
 const education = [
   {
-    degree: 'Master of Science (MS), Business Analytics',
+    degree: 'MSc. in Business Analytics',
     institution: 'University of California, Irvine',
     school: 'The Paul Merage School of Business',
     period: 'Jul 2024 – Sep 2025',
@@ -64,7 +64,7 @@ const education = [
   },
   {
     degree: 'BA (Honors) Business Management – Marketing',
-    institution: 'Middlesex University',
+    institution: 'Middlesex University London',
     school: undefined,
     period: '2018 – 2021',
     grade: 'First Class Honours',
@@ -98,7 +98,7 @@ export default function Education() {
           transition={{ duration: 0.8 }}
           className="text-center mb-10"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-slate-900 tracking-tight">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Education
           </h2>
           
@@ -108,84 +108,70 @@ export default function Education() {
           <div className="w-24 h-1.5 bg-gradient-to-r from-orange-500 via-pink-500 to-rose-500 rounded-full mx-auto"></div>
         </motion.div>
 
-        <div className="space-y-4">
+        <div className="flex flex-col items-center gap-6 max-w-2xl mx-auto">
           {education.map((edu, index) => {
             const colors = [
-              { bg: 'bg-orange-500', hover: 'bg-orange-600', border: 'border-orange-200', accent: 'text-orange-600' },
-              { bg: 'bg-pink-500', hover: 'bg-pink-600', border: 'border-pink-200', accent: 'text-pink-600' },
+              { header: 'from-orange-500 to-pink-500', accent: 'text-orange-500', badge: 'bg-orange-50 text-orange-700' },
+              { header: 'from-pink-500 to-fuchsia-500', accent: 'text-pink-500', badge: 'bg-pink-50 text-pink-700' },
             ]
             const color = colors[index % colors.length]
-            
+
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="group relative"
-                whileHover={{ x: index % 2 === 0 ? 4 : -4 }}
+                className="group w-full"
+                whileHover={{ y: -4 }}
               >
-                <div className={`absolute -inset-0.5 bg-gradient-to-r ${color.bg} rounded-xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-300`}></div>
-                <div className={`relative bg-white rounded-xl p-6 border-2 ${color.border} hover:shadow-2xl transition-all duration-300 overflow-hidden`}>
-                  <div className={`absolute top-0 left-0 w-1 h-full ${color.bg} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-orange-100 to-pink-100 rounded-full -mr-12 -mt-12 opacity-20 group-hover:opacity-40 transition-opacity"></div>
-                  <div className="relative z-10 flex items-start gap-6">
-                    <div className="flex-shrink-0">
-                      <motion.div 
-                        className={`w-14 h-14 rounded-xl ${color.bg} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300`}
-                        whileHover={{ rotate: [0, 10, -10, 10, 0], scale: 1.1 }}
-                        transition={{ duration: 0.5 }}
-                      >
-                        <DoodleGradCap />
-                      </motion.div>
+                <div className="rounded-2xl overflow-hidden border border-white/10 flex flex-col">
+                  {/* Coloured header band */}
+                  <div className={`bg-gradient-to-r ${color.header} p-6 pb-8`}>
+                    <p className="text-white/70 text-sm font-medium mb-1 uppercase tracking-widest">
+                      {edu.period}
+                    </p>
+                    <h3 className="text-2xl font-bold text-white leading-snug">{edu.degree}</h3>
+                  </div>
+
+                  {/* Dark glass body */}
+                  <div className="bg-white/8 p-6 flex flex-col flex-1 -mt-3">
+                    {/* Institution */}
+                    <div className="mb-4">
+                      <p className="text-xl font-bold text-white">{edu.institution}</p>
+                      {edu.school && <p className="text-white/55 text-sm mt-0.5">{edu.school}</p>}
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="flex flex-wrap items-baseline gap-2 mb-1">
-                        <h3 className="text-xl font-semibold text-slate-900">{edu.institution}</h3>
-                        {edu.school && (
-                          <>
-                            <span className="text-slate-400">•</span>
-                            <span className="text-slate-700 font-medium">{edu.school}</span>
-                          </>
-                        )}
+
+                    {'grade' in edu && edu.grade && (
+                      <span className={`self-start text-xs font-semibold px-3 py-1 rounded-full mb-4 bg-white/15 text-white/85`}>
+                        {edu.grade}
+                      </span>
+                    )}
+
+                    {'activities' in edu && edu.activities && edu.activities.length > 0 && (
+                      <div className="mb-4">
+                        <p className="text-xs font-semibold text-white/45 uppercase tracking-wide mb-2">Activities</p>
+                        <ul className="text-sm text-white/70 space-y-1 list-disc list-inside">
+                          {edu.activities.map((item, i) => (
+                            <li key={i}>{item}</li>
+                          ))}
+                        </ul>
                       </div>
-                      <p className={`text-lg font-medium ${color.accent} mb-2`}>{edu.degree}</p>
-                      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-slate-500 mb-3 text-sm">
-                        <div className="flex items-center gap-1">
-                          <Calendar className="w-4 h-4" />
-                          <span>{edu.period}</span>
+                    )}
+
+                    {edu.coursework && edu.coursework.length > 0 && (
+                      <div className="mt-auto">
+                        <p className="text-xs font-semibold text-white/45 uppercase tracking-wide mb-2">Coursework</p>
+                        <div className="flex flex-wrap gap-1.5">
+                          {edu.coursework.map((course, i) => (
+                            <span key={i} className="px-2.5 py-1 bg-white/10 text-white/70 rounded-md text-xs font-medium">
+                              {course}
+                            </span>
+                          ))}
                         </div>
-                        {'grade' in edu && edu.grade && (
-                          <span className="font-medium text-slate-600">{edu.grade}</span>
-                        )}
                       </div>
-                      {'activities' in edu && edu.activities && edu.activities.length > 0 && (
-                        <div className="mb-3">
-                          <p className="text-sm font-semibold text-slate-700 mb-1.5">Activities and societies</p>
-                          <ul className="text-sm text-slate-600 space-y-0.5 list-disc list-inside">
-                            {edu.activities.map((item, i) => (
-                              <li key={i}>{item}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-                      {edu.coursework && edu.coursework.length > 0 && (
-                        <div>
-                          <p className="text-sm font-semibold text-slate-700 mb-1.5">Relevant coursework</p>
-                          <div className="flex flex-wrap gap-2">
-                            {edu.coursework.map((course, i) => (
-                              <span
-                                key={i}
-                                className="px-2.5 py-1 bg-slate-100 text-slate-600 rounded-md text-xs font-medium"
-                              >
-                                {course}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-                    </div>
+                    )}
                   </div>
                 </div>
               </motion.div>
